@@ -1,0 +1,20 @@
+.badge		{
+	border:2px solid;
+	background:transparent !important; 
+	border-radius:0;
+	float:right;
+	&.up {
+		color: color('docker-green','base') !important;
+	}
+	&.down {
+		color: color('docker-red','base') !important;
+	}
+	&.hub {
+		color: color('docker-primary','base') !important;
+	}	
+	&.official {
+		color: color('docker-orange','base') !important;
+	}	
+}
+
+

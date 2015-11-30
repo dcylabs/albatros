@@ -1,0 +1,41 @@
+#aview{
+	position:absolute;
+	left:340px;
+	right:0;
+	opacity:1;
+}
+
+#aview.fade.ng-leave{
+ 	transition: 0.5s linear all;
+ 	opacity:1; 
+ 	&.ng-leave-active{
+ 		opacity:0;
+ 	}
+}
+#aview.fade.ng-enter{
+ 	transition: 0.5s linear all;
+ 	opacity:0; 
+ 	&.ng-enter-active{
+ 		opacity:1;
+ 	}
+}
+
+#aview.fadeNSlide.ng-leave{
+ 	transition: 0.5s linear all;
+ 	top:0;
+ 	opacity:1; 
+ 	&.ng-leave-active{
+ 		top:-2000px;
+ 		opacity:0;
+ 	}
+}
+
+#aview.fadeNSlide.ng-enter{ 
+ 	transition: 0.5s linear all;
+ 	top:2000px;
+ 	opacity:0; 
+ 	&.ng-enter-active{
+ 		top:0;
+ 		opacity:1;
+ 	}
+}

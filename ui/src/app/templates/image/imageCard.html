@@ -1,0 +1,41 @@
+<div class="col-md-4">
+	<div class="imageCard">
+		<div class="image" style="border-color:{{image.Recommended.gradient_end}};background:linear-gradient({{image.Recommended.gradient_start}},{{image.Recommended.gradient_end}})">
+			<img src="{{image.Recommended.imgUrl}}"/>		
+		</div>
+		<div class="content">
+			<div class="repo official" ng-if="image.Hub.is_official">
+				official
+			</div>
+			<div class="repo {{image.Hub.name ? 'hub' : ''}}" ng-if="!image.Hub.is_official">
+				{{ image.Repository ? image.Repository : 'local' }} 
+			</div>			
+			<div class="name"> {{ image.Name ? image.Name : image.shortName }} </div>
+			<div class="id"> {{ image.Id | limitTo: 12 }} </div>
+			<hr/>
+			<div class="tag">
+				{{ image.Tag }}
+			</div>
+       		<div class="virtualSize">
+          		{{ image.VirtualSize | dockerBytes }}
+        	</div>
+			<a href="#/images/{{image.Id}}">
+				<i class="material-icons"> zoom_in </i>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+<!--
+<div class="col-md-6">
+
+	<div class="panel panel-primary">
+		<div class="panel-body" style="background:{{image.recommended.gradient_start}}">
+			<img src="/kitematic/recommended/{{image.recommended.img}}"/>
+			{{image.shortName}}
+		</div>
+	</div>
+
+</div>
+-->

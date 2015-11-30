@@ -1,0 +1,47 @@
+@mixin loader-state-default(){
+	transform: scaleY(0.5);
+	background: color('docker-secondary','base');	
+	opacity:0.7;
+}
+@mixin loader-state-animate(){
+	transform: scaleY(1);
+	background: color('docker-primary','base');	
+	opacity:1;
+}
+
+.loader{
+	position:absolute;
+	bottom:10px;
+	left:20px;
+	$duration: 1.2s;
+	.rect{
+		display:inline-block;
+		height:10px; 
+		width:5px;   
+		margin: 0 1px;
+		@include loader-state-default(); 
+		background: color('docker-secondary','base');	   
+	}
+	@for $i from 0 to 10{
+		.rect#{$i}{
+			animation-delay: $duration + ($i*0.1s);
+		}
+	}
+	&.loading{
+		.rect{
+			animation-name: load-rect;
+			animation-duration: $duration; 
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite; 
+		}
+	}
+}
+
+@keyframes load-rect{
+	0%, 40%, 100%{
+		@include loader-state-default(); 
+	}
+	20% {
+		@include loader-state-animate(); 
+	}
+}

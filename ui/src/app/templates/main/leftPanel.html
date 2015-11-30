@@ -1,0 +1,68 @@
+<div class="leftPanel" ng-controller="MainLeftPanelController">
+  <div class="searchInput">
+    <input class="form-control" type="text" ng-model="query" placeholder="Look for container, images" /> 
+  </div>
+  <div class="leftTitle">
+    Containers
+    <a class="material-icons" ng-click="refreshContainers()"> refresh </a>
+    <a class="material-icons" href="#/containers"> list </a>
+    <a class="material-icons" ng-click="refreshContainers()"> add </a>
+  </div>
+  <ul class="containers">
+    <li ng-repeat="container in filteredContainers = (containers | filter: { shortName: query } | limitTo: 3) ">
+      <a href="#/containers/{{container.Id}}"> 
+        <span class="name"> {{ container.shortName }} </span>
+        <span class="badge {{ container.isUp ? 'up' : 'down'}}" >
+          {{ container.isUp ? 'UP' : 'DOWN'}}
+        </span>
+        <div class="network">
+          <span ng-repeat="port in container.Ports | limitTo: 2">
+            {{ port.toString() }}
+          </span>
+        </div>
+      </a>
+    </li>
+    <li class="notFound" ng-hide="filteredContainers.length"> No container found </li>
+  </ul>
+
+  <div class="leftTitle">
+    Images <%= pkg.name %>
+    <a class="material-icons" ng-click="refreshImages()"> refresh </a>
+    <a class="material-icons" href="#/images"> list </a>
+    <a class="material-icons" ng-click="refreshContainers()"> add </a> 
+  </div>  
+  <ul class="images">
+    <li ng-repeat="image in filteredImages = (images | filter:{isFinalImage:true} | filter: { shortName: query } | limitTo: 3) ">
+      <a href="#/images/{{image.Id}}"> 
+        <span class="name"> {{ image.shortName }} </span>
+        <span ng-if="image.Hub.name" class="badge hub">
+          hub
+        </span>       
+        <span ng-if="image.Hub.is_official" class="badge official">
+          official
+        </span>               
+        <span ng-if="image.Tag != ''" class="badge">
+          {{ image.Tag }}
+        </span>                 
+        <span class="virtualSize">
+          {{ image.VirtualSize | dockerBytes }}
+        </span>
+      </a>
+    </li>
+    <li class="notFound" ng-hide="filteredImages.length"> No image found </li>
+  </ul>      
+
+  <div class="brand">
+    <div class="logo loading"></div>
+    <div class="title"> Albatros </div>
+    <div class="subtitle"> Manage your Docker </div>
+    <div class="version"> <%= pkg.version %> </div>
+  </div>
+
+  <div class="loader {{isLoading?'loading':''}}">
+    <div ng-repeat="i in [1,2,3,4,5]" class="rect rect{{i}}"></div>
+  </div>
+
+</div> 
+
+<div ng-controller="MainAuthController"></div>

@@ -1,0 +1,68 @@
+@import "../../../vendor/bower_components/sweetalert2/src/sweetalert2.scss";
+@import "../../../vendor/bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss"; 
+//@import "jquery-toast.scss";
+@import "components/fonts/material-design-icons.scss"; 
+@import "components/colors.scss"; 
+@import "components/badge.scss"; 
+@import "components/leftPanel.scss"; 
+@import "components/ngAnimate.scss"; 
+@import "components/blackboard.scss"; 
+@import "components/console.scss"; 
+@import "components/toolbar.scss"; 
+@import "components/loader.scss"; 
+@import "components/containerPanel.scss"; 
+   
+
+@scrollbars(20px, red, blue);
+
+html{ 
+	body{ 
+		background: #f8f8f8;
+		.sweet-alert{
+			hr{
+				height:0;
+			}
+		}
+		.clear{
+			clear:both;
+		}
+
+		main{
+			padding-left:340px;
+			overflow-y:overlay;
+			header{
+				padding:10px 20px;
+				background: white;
+				border-bottom: 1px solid #ccc;
+			}
+			.pageTitle{
+				background:color('docker-secondary','base');
+				color:white;
+				font-weight:bold; 
+				text-transform:uppercase;
+				margin:0; 
+				margin-bottom:15px;
+				padding:28px; 
+				text-align:center;
+				.badge{
+					float:none;
+				}
+			}
+			table{
+				tr{
+					td,th{
+						vertical-align:top;
+						ul{
+							list-style:none; 
+							padding:0;
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+}        
+

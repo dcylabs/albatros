@@ -1,0 +1,208 @@
+.containerCard{
+	position:relative;
+	text-align:center;
+	color:white;
+	padding:20px 10px;
+	margin:5px -5px;
+	border: 2px solid;
+	img{
+		margin:0 auto;
+		height:45px;
+	}
+	.name{
+		margin-top:10px;
+		text-transform: uppercase;
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	.id{
+		text-transform: uppercase;
+	}
+	.image{
+		font-style:italic;
+	}
+	.status{
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		width:10px;
+		opacity:0.7;
+		&.up {
+			background: color('docker-green','base');
+		} 
+		&.down {
+			background: color('docker-red','base');
+		}
+	}
+	a{
+		position:absolute;
+		top:10px;
+		right:10px;
+		width:34px;
+		height:34px;
+		background:rgba(black,0.1);
+		border-radius:50%;
+		color:inherit;
+		transition: all 0.3s;
+		i{
+			line-height:34px;
+			vertical-align:middle;
+		}
+		&:hover{
+			background:rgba(black,0.4);
+		}
+	}
+}
+
+.imageCard{
+	
+	$image-width: 80px;
+	position:relative;
+	margin:5px -5px;
+	padding-left:$image-width;
+	border:1px solid #ccc;
+	.image{
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		width:$image-width;
+		text-align:center;
+		padding:20px 0;
+		img{
+			margin:0 auto; 
+			width:45px;
+		}
+	}
+	.content{
+		padding:20px 20px;
+		background:white;
+		.repo{
+			font-style:italic;
+			color:#aaa;
+			&.official{
+				color: color('docker-orange','base');
+			}
+			&.hub{
+				color: color('docker-primary','base');
+			}
+		}
+		.name{
+			text-transform: uppercase;
+			font-weight:bold;
+			font-size:1.2em;
+		}
+		.id{
+			text-transform: uppercase;
+		}
+		.tag, .virtualSize{
+			display:inline-block;
+			font-style:italic;
+			margin:-5px 5px; 
+			color:#ccc;
+		}
+		.tag{
+			font-weight:bold;
+			border:2px solid; 
+			padding: 0 6px;
+		}
+		a{
+			position:absolute;
+			top:10px;
+			right:10px;
+			width:34px;
+			height:34px;
+			background:rgba(#aaa,0.1);
+			text-align:center;
+			border-radius:50%;
+			color:inherit;
+			transition: all 0.3s;
+			i{
+				line-height:34px;
+				vertical-align:middle;
+			}
+			&:hover{
+				background:rgba(#aaa,0.4);
+			}
+		}
+	}
+}
+
+
+
+
+
+.panel.panel-info{
+	color:white;
+	background: color('docker-secondary','base'); 
+	.panel-heading{
+		text-align:center; 
+		font-weight:bold;
+		font-size:1.2em;
+		line-height:1em;
+		color:#ccc;
+		background:rgba(black,0.1);
+		border-bottom:2px solid rgba(black,0.2);
+	}
+	.panel-body{
+		font-size:0.8em;
+	}
+	table{
+		width:100%;
+		td,th{
+			padding:0 5px;
+		}	
+		&.configuration{	
+			th{
+				width:20%;
+			}
+			td{
+				width:30%;
+			}
+		}
+	}
+	.prelined{
+		white-space:pre-line;
+	}
+	.noData{
+		text-align:center;
+		padding:10px;
+		font-style:italic;
+	}
+	&.light{
+		.panel-heading{
+			color:color('docker-secondary','base'); 
+		}
+		background: color('docker-grey','base');
+		color:black; 
+	}
+	&.hub{
+		.image{
+			text-align:center;
+			padding:20px;
+		}
+		.name{
+			position:relative;
+			text-align:center;
+			font-weight:bold;
+			font-size:3em;
+			.badges{
+				position:absolute;
+				top:14px;
+				margin-left:20px;
+				display:inline-block;
+				.badge{
+					color:#ccc;
+					margin-left:6px;				
+				}
+			}
+		}
+		.description{
+			text-align:center; 
+			font-size:1.6em;
+			font-style:italic;
+			margin-bottom:10px;
+		}
+	}
+}

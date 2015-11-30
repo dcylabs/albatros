@@ -1,0 +1,22 @@
+{
+  "name": "albatros-web-ui",
+  "description": "Remotely manage your Docker server",
+  "authors": [
+    "Dcylabs <dcylabs@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dcylabs/albatros",
+  "private": true,
+  "dependencies": {
+    "sweetalert2": "~0.2.4",
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-resource": "~1.4.7",
+    "underscore": "~1.8.3",
+    "angular-animate": "~1.4.7",
+    "bootstrap-sass": "~3.3.5",
+    "jquery": "~2.1.4",
+    "angular-websocket": "~1.0.14",
+    "material-design-icons": "2.1"
+  }
+}
