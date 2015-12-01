@@ -75,7 +75,8 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 			return string;
 		};
 		
-		var url = 'ws://'+thys.absApiPath+'/containers/'+options.id+'/attach/ws?'+optionString();
+		var protocol = (location.protocol === 'http:') ? 'ws://' : 'wss://' ;
+		var url = protocol+thys.absApiPath+'/containers/'+options.id+'/attach/ws?'+optionString();
 		return $websocket(url);
 	};
 
