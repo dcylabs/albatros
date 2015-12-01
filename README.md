@@ -2,9 +2,9 @@
 ## Deployment 
 ### Docker 
 ```
-docker run -d \ 
+docker run -d \
  -v /var/run/docker.sock:/var/run/docker.sock:ro \
- -v ~/config.json:/var/albatros/go/bin/config.json:ro \
+ -v ~/config.json:/var/albatros/config.json:ro \
  -v ~/key.pem:/var/albatros/key.pem:ro \
  -v ~/cert.pem:/var/albatros/cert.pem:ro \
  -p "80:80" -p "443:443" dcylabs/albatros
@@ -15,7 +15,7 @@ albatros:
   image: dcylabs/albatros
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock:ro
-    - ~/config.json:/var/albatros/go/bin/config.json:ro
+    - ~/config.json:/var/albatros/config.json:ro
     - ~/key.pem:/var/albatros/key.pem:ro
     - ~/cert.pem:/var/albatros/cert.pem:ro
   ports:
