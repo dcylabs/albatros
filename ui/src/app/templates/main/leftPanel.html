@@ -6,7 +6,6 @@
     Containers
     <a class="material-icons" ng-click="refreshContainers()"> refresh </a>
     <a class="material-icons" href="#/containers"> list </a>
-    <a class="material-icons" ng-click="refreshContainers()"> add </a>
   </div>
   <ul class="containers">
     <li ng-repeat="container in filteredContainers = (containers | filter: { shortName: query } | limitTo: 3) ">
@@ -26,10 +25,9 @@
   </ul>
 
   <div class="leftTitle">
-    Images <%= pkg.name %>
+    Images 
     <a class="material-icons" ng-click="refreshImages()"> refresh </a>
     <a class="material-icons" href="#/images"> list </a>
-    <a class="material-icons" ng-click="refreshContainers()"> add </a> 
   </div>  
   <ul class="images">
     <li ng-repeat="image in filteredImages = (images | filter:{isFinalImage:true} | filter: { shortName: query } | limitTo: 3) ">
