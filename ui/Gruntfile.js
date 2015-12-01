@@ -32,7 +32,7 @@ module.exports = function(grunt){
       					expand: true, 
       					cwd: 'src/app/static/',
       					src: ['**'], 
-      					dest: 'build/static'
+      					dest: 'build/'
       				},
       				{
       					expand: true, 
