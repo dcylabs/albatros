@@ -23,6 +23,10 @@ module.exports = function(grunt){
   			app: {
     			files: [
       				{
+      					src: ['vendor/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.*'],
+      					dest: 'build/webfonts/'
+      				},    			
+      				{
       					expand: true, 
       					cwd: 'src/app/img/',
       					src: ['**'], 
