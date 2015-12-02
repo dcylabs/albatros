@@ -15,7 +15,7 @@ RUN go get github.com/dgrijalva/jwt-go
 RUN go get code.google.com/p/go.net/websocket
 
 WORKDIR	/var/albatros/
-RUN go build albatros-server 
+RUN go build -tags netgo albatros-server 
 
 WORKDIR /var/albatros/ui 
 RUN npm install 
@@ -24,5 +24,10 @@ RUN grunt build
 
 WORKDIR /var/albatros
 RUN chmod +x /var/albatros/albatros-server 
+
+RUN rm -rf /var/albatros/ui/node_modules/
+RUN rm -rf /var/albatros/ui/vendor/
+RUN rm -rf /var/albatros/ui/src/
+RUN rm -rf /var/albatros/go
 
 CMD ["/var/albatros/albatros-server"]
