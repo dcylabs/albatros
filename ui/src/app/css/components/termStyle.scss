@@ -1,0 +1,54 @@
+
+.termStyle-0{
+	font-weight: inherit;
+	opacity: inherit;
+	text-decoration: inherit;
+	display: inherit;
+	color: inherit;
+	background-color: inherit;
+}
+
+.termStyle-1{font-weight:bold;}
+.termStyle-2{opacity:0.5;}
+.termStyle-4{text-decoration:underline;}
+.termStyle-5{text-decoration:blink;}
+.termStyle-8{display:none;}
+
+.termStyle-21{font-weight:inherit;}
+.termStyle-22{opacity:inherit;}
+.termStyle-24{text-decoration:inherit;}
+.termStyle-25{text-decoration:inherit;}
+.termStyle-28{display:inherit;}
+
+
+
+$termColors : (
+	"0"  	: ("addition":0, 	"color": black), //black
+	"1"  	: ("addition":1, 	"color": #E74C3C), //red
+	"2"  	: ("addition":2, 	"color": #2ECC71), //green
+	"3"  	: ("addition":3, 	"color": #F1C40F), //yellow
+	"4"  	: ("addition":4, 	"color": #3498DB), //blue
+	"5"  	: ("addition":5, 	"color": #9B59B6), //magenta
+	"6"  	: ("addition":6, 	"color": #1ABC9C), //cyan
+	"7"  	: ("addition":7, 	"color": #BDC3C7), //grey 
+	
+	"9"  	: ("addition":9, 	"color": inherit),
+
+	"60"  	: ("addition":60, 	"color": darkgrey), //darkgrey
+	"61"  	: ("addition":61, 	"color": lighten(#E74C3C, 15%)), //lightred
+	"62"  	: ("addition":62, 	"color": lighten(#2ECC71, 15%)),  //lightgreen
+	"63"  	: ("addition":63, 	"color": lighten(#F1C40F, 15%)), //lightyellow
+	"64"  	: ("addition":64, 	"color": lighten(#3498DB, 15%)), //lightblue
+	"65"  	: ("addition":65, 	"color": lighten(#9B59B6, 15%)), //lightmagenta
+	"66"  	: ("addition":66, 	"color": lighten(#1ABC9C, 15%)), //lightcyan
+	"67"  	: ("addition":67, 	"color": white) //white
+);
+
+@each $key, $variant in $termColors { 
+  .termStyle-#{map-get($variant,"addition")+30} {
+    color: map-get($variant,"color");
+  }
+  .termStyle-#{map-get($variant,"addition")+40} {
+    background-color: map-get($variant,"color");
+  }  
+}

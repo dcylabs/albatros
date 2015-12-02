@@ -71,7 +71,10 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 
   $scope.downloadLogs = function(){ 
     DockerResource.Containers.logs({id:$routeParams.id, tail:false},function(data){
-      window.open('data:text/html;charset=utf-8,<link rel="stylesheet" type="text/css" href="http://'+window.location.hostname+'/css/app.sass.css" media="all" /><pre>'+encodeURIComponent($filter('termStyle')(data))+'</pre>', '_blank');
+      var logs = $filter('termStyle')(data);
+      var template = $templateCache.get('container/containerLogs.html');
+      var html = template.replace('{{data}}',logs).replace('{{host}}',window.location.host);
+      window.open('data:text/html;charset=utf-8,'+encodeURIComponent(html), '_blank');
     });
   };
 
