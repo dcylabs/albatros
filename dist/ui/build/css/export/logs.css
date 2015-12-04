@@ -1,0 +1,186 @@
+.termStyle-0 {
+  font-weight: inherit;
+  opacity: inherit;
+  text-decoration: inherit;
+  display: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+
+.termStyle-1 {
+  font-weight: bold;
+}
+
+.termStyle-2 {
+  opacity: 0.5;
+}
+
+.termStyle-4 {
+  text-decoration: underline;
+}
+
+.termStyle-5 {
+  text-decoration: blink;
+}
+
+.termStyle-8 {
+  display: none;
+}
+
+.termStyle-21 {
+  font-weight: inherit;
+}
+
+.termStyle-22 {
+  opacity: inherit;
+}
+
+.termStyle-24 {
+  text-decoration: inherit;
+}
+
+.termStyle-25 {
+  text-decoration: inherit;
+}
+
+.termStyle-28 {
+  display: inherit;
+}
+
+.termStyle-30 {
+  color: black;
+}
+
+.termStyle-40 {
+  background-color: black;
+}
+
+.termStyle-31 {
+  color: #E74C3C;
+}
+
+.termStyle-41 {
+  background-color: #E74C3C;
+}
+
+.termStyle-32 {
+  color: #2ECC71;
+}
+
+.termStyle-42 {
+  background-color: #2ECC71;
+}
+
+.termStyle-33 {
+  color: #F1C40F;
+}
+
+.termStyle-43 {
+  background-color: #F1C40F;
+}
+
+.termStyle-34 {
+  color: #3498DB;
+}
+
+.termStyle-44 {
+  background-color: #3498DB;
+}
+
+.termStyle-35 {
+  color: #9B59B6;
+}
+
+.termStyle-45 {
+  background-color: #9B59B6;
+}
+
+.termStyle-36 {
+  color: #1ABC9C;
+}
+
+.termStyle-46 {
+  background-color: #1ABC9C;
+}
+
+.termStyle-37 {
+  color: #BDC3C7;
+}
+
+.termStyle-47 {
+  background-color: #BDC3C7;
+}
+
+.termStyle-39 {
+  color: inherit;
+}
+
+.termStyle-49 {
+  background-color: inherit;
+}
+
+.termStyle-90 {
+  color: darkgrey;
+}
+
+.termStyle-100 {
+  background-color: darkgrey;
+}
+
+.termStyle-91 {
+  color: #ef8b80;
+}
+
+.termStyle-101 {
+  background-color: #ef8b80;
+}
+
+.termStyle-92 {
+  color: #69dd9a;
+}
+
+.termStyle-102 {
+  background-color: #69dd9a;
+}
+
+.termStyle-93 {
+  color: #f5d657;
+}
+
+.termStyle-103 {
+  background-color: #f5d657;
+}
+
+.termStyle-94 {
+  color: #75b9e7;
+}
+
+.termStyle-104 {
+  background-color: #75b9e7;
+}
+
+.termStyle-95 {
+  color: #bb8ecd;
+}
+
+.termStyle-105 {
+  background-color: #bb8ecd;
+}
+
+.termStyle-96 {
+  color: #3ee4c4;
+}
+
+.termStyle-106 {
+  background-color: #3ee4c4;
+}
+
+.termStyle-97 {
+  color: white;
+}
+
+.termStyle-107 {
+  background-color: white;
+}
+
+/*# sourceMappingURL=logs.css.map */

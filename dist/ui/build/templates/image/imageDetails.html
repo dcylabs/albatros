@@ -1,0 +1,90 @@
+<div class="toolbar-container">
+	<div class="headbar images">
+		<div class="pageName"> {{ image.basic.shortName }} </div>
+		<div class="subName"> {{ image.basic.Tag }} </div>
+	</div>
+	<div class="toolbar">
+		{{ image.basic.Id }}
+		<ul class="right">
+			<li class="material-icons"><a ng-click="remove()"> delete </a></li>
+			<li class="separator" ng-if="image.basic.Hub.name"></li>			
+			<li class="material-icons" ng-if="image.basic.Hub.name"><a href="{{ image.basic.Hub.repositoryUrl }}" target="_blank"> cloud_queue </a></li>
+		</ul>		
+	</div>
+</div>
+
+
+
+<div class="col-md-6">
+
+	<div class="panel panel-info light">
+		<div class="panel-heading"> INFORMATIONS </div>
+		<div class="panel-body">
+			<table class="configuration"> 
+				<tr> 
+					<th> Size </th>
+					<td> {{ image.detailed.VirtualSize | dockerBytes }} </td>					
+					<th> Command </th>
+					<td> {{ image.detailed.Config.Cmd.join(' ') }} </td>
+				</tr>							
+				<tr>
+					<th colspan="4"> Exposed ports </th>
+				</tr>
+				<tr ng-repeat="(in,out) in image.detailed.Config.ExposedPorts">
+					<th></th>
+					<td colspan="3">
+						{{in}}
+						<span ng-if="out[0]"> &rarr; {{out[0].HostIp}}:{{out[0].HostPort}}
+					</td>
+				</tr>
+				<tr ng-if="!image.detailed.Config.ExposedPorts"> 
+					<th></th>
+					<td colspan="3"> No data available </td>
+				</tr>
+				
+				<tr>
+					<th colspan="4"> Environment </th>
+				</tr>				
+				<tr ng-repeat="env in image.detailed.Config.Env">
+					<th></th>
+					<td colspan="3">{{env}}</td>
+				</tr>	
+				<tr ng-if="!image.detailed.Config.Env"> 
+					<th></th>
+					<td colspan="3"> No data available </td>
+				</tr>	
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<div class="col-md-6">
+ 
+	<div class="panel panel-info hub">
+		<div class="panel-heading"> HUB </div>
+		<div class="panel-body" ng-if="image.basic.Hub.name">
+			<div class="image">
+				<img src="{{ image.basic.Recommended.imgUrl }}" /> 
+			</div>
+			<div class="name">
+				{{ image.basic.Hub.name }}
+				<div class="badges">
+					<div class="badge official" ng-if="image.basic.Hub.is_official">
+						official
+					</div>
+					<div class="badge">
+						{{ image.basic.Tag }}
+					</div>					
+				</div>
+			</div>
+			<div class="description">
+				{{ image.basic.Hub.description }}
+			</div>
+		</div>
+		<div class="panel-body noData" ng-if="!(image.basic.Hub.name)">
+			This image is not on the Docker Hub
+		</div>
+	</div>
+
+</div>
