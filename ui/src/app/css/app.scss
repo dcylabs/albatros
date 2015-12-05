@@ -1,20 +1,17 @@
 @import "components/colors.scss";
 @import "../../../vendor/bower_components/sweetalert2/src/sweetalert2.scss";
 @import "../../../vendor/bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss"; 
-//@import "jquery-toast.scss";
 @import "components/fonts/material-design-icons.scss";  
 @import "components/badge.scss"; 
 @import "components/leftPanel.scss"; 
 @import "components/ngAnimate.scss"; 
-@import "components/blackboard.scss"; 
 @import "components/console.scss"; 
 @import "components/toolbar.scss"; 
+@import "components/image.scss"; 
 @import "components/loader.scss"; 
-@import "components/termStyle.scss"; 
-@import "components/containerPanel.scss"; 
-   
-
-@scrollbars(20px, red, blue);
+@import "components/terminal.scss"; 
+@import "components/cards.scss";
+@import "components/panels.scss"; 
 
 html{ 
 	body{ 
@@ -27,7 +24,15 @@ html{
 		.clear{
 			clear:both;
 		}
-
+		.btn{
+			.material-icons{
+				font-size:inherit; 
+				line-height:inherit; 
+				width:auto;
+				height:auto;
+				vertical-align:middle;
+			}
+		}		
 		main{
 			padding-left:340px;
 			overflow-y:overlay;
@@ -61,9 +66,5 @@ html{
 				}
 			}
 		}
-
-
-
 	}
 }        
-

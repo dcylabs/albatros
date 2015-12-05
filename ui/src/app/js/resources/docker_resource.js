@@ -10,10 +10,10 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
   		if(thys.hubData[term]){
   			return thys.hubData[term]; 
   		}else{
-  			thys.hubData[term] = thys.Images.search({term: term}, function(data){
+  			thys.hubData[term] = thys.Images.hub({term: term}, function(data){
   				data.repositoryUrl = "http://hub.docker.com/";
   				if(data.is_official){
-  					data.repositoryUrl += '_/'+data.name;
+  					data.repositoryUrl += 'r/library/'+data.name;
   				}else{
   					data.repositoryUrl += 'r/'+data.name;
   				}
@@ -23,7 +23,7 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
   	};
 
   	// Transformers 
-  	var containerTransformer = function(data, header){
+  	var containerTransformer = function(data, headers){
 		var wrapped = angular.fromJson(data);
 		angular.forEach(wrapped, function(item, index){
 			var container = wrapped[index] = new ContainerModel(item);
@@ -32,7 +32,7 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 		return wrapped;
 	};
 
-  	var imageTransformer = function(data, header){
+  	var imageTransformer = function(data, headers){
 		var wrapped = angular.fromJson(data);
 		angular.forEach(wrapped, function(item, index){
 			var image = wrapped[index] = new ImageModel(item);
@@ -44,13 +44,31 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 		return wrapped;
 	};
 
-	var hubTransformer = function(data, header){
+	var hubTransformer = function(data, headers){
 		var wrapped = angular.fromJson(data);	
-		//console.log('ok');
 		return wrapped[0] ? wrapped[0] : false ;
 	}; 
 
-	// /containers/(id)/attach/ws
+	var searchTransformer = function(data, headers){
+		var wrapped = angular.fromJson(data);
+		angular.forEach(wrapped, function(item, index){
+			var image = wrapped[index] = item;
+			image.Recommended = ImageRecommendedService.getRecommended(image.name); 
+			image.repositoryUrl = "http://hub.docker.com/";
+			if(image.is_official){
+				image.repositoryUrl += 'r/library/'+image.name;
+			}else{
+				image.repositoryUrl += 'r/'+image.name;
+			}
+		});
+		return wrapped;		
+	};
+
+	var pullTransformer = function(data, headers){
+		var datas = resourceDataToStr(data).trim().split("\n"); 
+		return angular.fromJson(datas[datas.length - 1]); 
+	};
+
   	var isLoggedIn = function(){
   		return (typeof($http.defaults.headers.common["Authorization"]) !== 'undefined');
   	};
@@ -116,12 +134,17 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 		'attach'	: {method: 'GET'	, params: {id: '@id', action: 'attach', format: 'ws'}}		 		
 	});
 
-	thys.Images = $resource(thys.relApiPath+'/images/:id/:action/:format', {}, {
+	thys.Images = $resource(thys.relApiPath+'/images/:id/:action/:format', {
+		fromImage: '@fromImage',
+		tag: '@tag',
+	}, {
 		//'list': {method: 'GET', params: {all: 0, action: 'json', digests: 1, filters: {dangling: ["false"], label:["key"]} }, isArray: true, transformResponse: imageTransformer}
 		'list'		: {method: 'GET'	, params: {all: 0, action: 'json'}		,isArray: true, transformResponse: imageTransformer},
 		'get' 		: {method: 'GET'	, params: {id: '@id', format: 'json'}},
-		'search'	: {method: 'GET'	, params: {action: 'search'}, transformResponse: hubTransformer},
-		'remove'	: {method: 'DELETE'	, params: {id: '@id', noprune: 1}}, 
+		'hub'		: {method: 'GET'	, params: {action: 'search'}, transformResponse: hubTransformer},
+		'search'	: {method: 'GET'	, params: {action: 'search'}, isArray: true, transformResponse: searchTransformer},
+		'create'	: {method: 'POST'	, params: {action: 'create'}, transformResponse:pullTransformer},  
+		'remove'	: {method: 'DELETE'	, params: {id: '@id', noprune: 1}, transformResponse: []},  
 	});	
 
   	return thys; 

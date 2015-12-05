@@ -1,0 +1,45 @@
+<div class="toolbar-container">
+	<div class="headbar new-image">
+		<div class="pageName"> Image </div>
+		<div class="subName"> Pull </div>
+	</div>
+	<div class="toolbar">
+		Pull an Image from docker hub
+	</div>
+</div>
+
+<div class="searchBlock">
+
+
+	<form ng-submit="search()">
+		<input ng-model="query" class="form-control"/>
+		<button type="submit" class="btn btn-primary"> <i class="material-icons"> search </i> </button>
+	</form>
+
+	<hr/>
+	
+	<table ng-if="images.length" class="hubTable">
+		<tr ng-repeat="image in images">
+			<td class="image">
+				<img ng-src="{{ image.Recommended.imgUrl }}" style="border-color:{{image.Recommended.gradient_end}};background:linear-gradient({{image.Recommended.gradient_start}},{{image.Recommended.gradient_end}})"/>
+			</td>
+			<td class="info">
+				<a class="name" ng-click="pull(image)"> {{ image.name }} </a>
+				<div class="description"> {{ image.description }} </div>
+				<div class="infos">
+					{{ image.is_official ? 'official' : 'public' }}
+					<span ng-if="image.is_automated">
+						| automated build
+					</span>
+				</div>
+			</td>
+			<td class="stars">
+				<div class="star_count"> {{image.star_count}} </div>
+				<div class="star_label"> STARS </div>
+			</td>
+		</tr>
+	</table>
+	<div ng-if="!images.length" class="noData">
+		No image found
+	</div>
+</div>

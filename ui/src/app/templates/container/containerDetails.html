@@ -22,86 +22,109 @@
 	</div>
 </div>
 
-<div class="col-md-6">
-	<!-- TOP -->
-	<div class="panel panel-info light">
-		<div class="panel-heading"> CONFIGURATION </div>
-		<div class="panel-body">
-			<table class="configuration"> 
-				<tr> 
-					<th> EntryPoint </th>
-					<td> {{ container.Path }} </td>					
-					<th> Command </th>
-					<td> {{ container.Config.Cmd.join(' ') }} </td>
-				</tr>
-				<tr>
-					<th> IP Address </th>
-					<td> {{ container.NetworkSettings.IPAddress }}
-					<th> Mac Address </th>
-					<td> {{ container.NetworkSettings.MacAddress | uppercase }}						
-				</tr>
+<div class="container-details">
+	<div class="col-md-6">
+		<div class="panel panel-info light">
+			<div class="panel-heading"> CONFIGURATION </div>
+			<div class="panel-body">
+				<table class="configuration"> 
+					<tr> 
+						<th> EntryPoint </th>
+						<td> {{ container.Path }} </td>					
+						<th> Command </th>
+						<td> {{ container.Config.Cmd.join(' ') }} </td>
+					</tr>
+					<tr>
+						<th> IP Address </th>
+						<td> {{ container.NetworkSettings.IPAddress }}
+						<th> Mac Address </th>
+						<td> {{ container.NetworkSettings.MacAddress | uppercase }}						
+					</tr>			
+					<tr>
+						<th colspan="4"> Ports </th>
+					</tr>
+					<tr ng-repeat="(in,out) in container.NetworkSettings.Ports">
+						<th></th>
+						<td colspan="3">
+							{{in}}
+							<span ng-if="out[0]"> &rarr; {{out[0].HostIp}}:{{out[0].HostPort}}
+						</td>
+					</tr>
+					<tr ng-if="!container.NetworkSettings.Ports"> 
+						<th></th>
+						<td colspan="3"> No data available </td>
+					</tr>
+					<tr>
+						<th colspan="4"> Environment </th>
+					</tr>				
+					<tr ng-repeat="env in container.Config.Env">
+						<th></th>
+						<td colspan="3">{{env}}</td>
+					</tr>	
+					<tr ng-if="!container.Config.Env"> 
+						<th></th>
+						<td colspan="3"> No data available </td>
+					</tr>					
+					<tr>
+						<th colspan="4"> Volumes </th>
+					</tr>				
+					<tr ng-repeat="bind in container.HostConfig.Binds">
+						<th></th>
+						<td colspan="3">{{bind}}</td>
+					</tr>	
+					<tr ng-if="!container.HostConfig.Binds"> 
+						<th></th>
+						<td colspan="3"> No data available </td>
+					</tr>	
+					<tr>
+						<th colspan="4"> Links </th>
+					</tr>				
+					<tr ng-repeat="link in container.HostConfig.Links">
+						<th></th>
+						<td colspan="3">{{link}}</td>
+					</tr>
+					<tr ng-if="!container.HostConfig.Links"> 
+						<th></th>
+						<td colspan="3"> No data available </td>
+					</tr>
+				</table>
+			</div>
+		</div>
 
-							
-				<tr>
-					<th colspan="4"> Ports </th>
-				</tr>
-				<tr ng-repeat="(in,out) in container.NetworkSettings.Ports">
-					<th></th>
-					<td colspan="3">
-						{{in}}
-						<span ng-if="out[0]"> &rarr; {{out[0].HostIp}}:{{out[0].HostPort}}
-					</td>
-				</tr>
-				<tr ng-if="!container.NetworkSettings.Ports"> 
-					<th></th>
-					<td colspan="3"> No data available </td>
-				</tr>
-
-				<tr>
-					<th colspan="4"> Environment </th>
-				</tr>				
-				<tr ng-repeat="env in container.Config.Env">
-					<th></th>
-					<td colspan="3">{{env}}</td>
-				</tr>	
-				<tr ng-if="!container.Config.Env"> 
-					<th></th>
-					<td colspan="3"> No data available </td>
-				</tr>					
-
-				<tr>
-					<th colspan="4"> Volumes </th>
-				</tr>				
-				<tr ng-repeat="bind in container.HostConfig.Binds">
-					<th></th>
-					<td colspan="3">{{bind}}</td>
-				</tr>	
-				<tr ng-if="!container.HostConfig.Binds"> 
-					<th></th>
-					<td colspan="3"> No data available </td>
-				</tr>	
-
-				<tr>
-					<th colspan="4"> Links </th>
-				</tr>				
-				<tr ng-repeat="link in container.HostConfig.Links">
-					<th></th>
-					<td colspan="3">{{link}}</td>
-				</tr>
-				<tr ng-if="!container.HostConfig.Links"> 
-					<th></th>
-					<td colspan="3"> No data available </td>
-				</tr>
-			
-				
-			</table>
+		<div class="panel panel-info">
+			<div class="panel-heading"> LOGS </div>
+			<div class="panel-body">
+				<div class="prelined" ng-if="logs" ng-bind-html="logs | termStyle"></div>
+				<div class="noData" ng-if="!logs"> No data available </div>
+			</div>
 		</div>
 	</div>
 
-	<div class="panel panel-info">
+	<div class="col-md-6 console-container" >
+		<div class="panel panel-info">
+			<div class="panel-heading"> CONSOLE </div>
+			<div class="panel-body">
+				<form ng-submit="send()" class="consoleContainer">
+					<div class="console">
+						<div class="output">
+							<div class="content" ng-bind-html="console | termStyle"></div>
+						</div>
+						<div class="input">
+							<i class="material-icons">chevron_right</i>
+							<input type="text" ng-model="command" placeholder="Enter command here" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>	
+	</div> 
+</div>
+ 
+<div class="col-md-12">
+	<div class="panel panel-info dark">
 		<div class="panel-heading"> TOP </div>
 		<div class="panel-body">
-			<table ng-if="top.Processes">
+			<table ng-if="top.Processes" class="fixed">
 				<tr>
 					<th ng-repeat="title in top.Titles"> {{ title }} </th>
 				</tr>
@@ -112,38 +135,5 @@
 			<div class="noData" ng-if="!top.Processes"> No data available </div>
 		</div>
 	</div>	
-
 </div>
-
-   
-
-<div class="col-md-6">
-	<!-- LOGS -->
-	<div class="panel panel-info">
-		<div class="panel-heading"> LOGS </div>
-		<div class="panel-body">
-			<div class="prelined" ng-if="logs" ng-bind-html="logs | termStyle"></div>
-			<div class="noData" ng-if="!logs"> No data available </div>
-		</div>
-	</div>
-
-	<div class="panel panel-info console">
-		<div class="panel-heading"> CONSOLE </div>
-		<div class="panel-body">
-			<form ng-submit="send()" class="consoleContainer">
-				<div class="console">
-					<div class="output">
-						<div class="content" ng-bind-html="console | termStyle"></div>
-					</div>
-					<div class="input">
-						<i class="material-icons">chevron_right</i>
-						<input type="text" ng-model="command" placeholder="Enter command here" />
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>	
-
-</div> 
-
  

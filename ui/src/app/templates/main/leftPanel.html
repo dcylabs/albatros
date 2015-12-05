@@ -29,6 +29,7 @@
     Images 
     <a class="material-icons" ng-click="refreshImages()"> refresh </a>
     <a class="material-icons" href="#/images"> list </a>
+    <a class="material-icons" href="#/imagePull"> add </a>
   </div>  
   <ul class="images">
     <li ng-repeat="image in filteredImages = (images | filter:{isFinalImage:true} | filter: { shortName: query } | limitTo: 3) ">

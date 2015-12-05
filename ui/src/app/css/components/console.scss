@@ -1,58 +1,77 @@
-.panel.panel-info.console{
-	background:#111;
-	.panel-body{
-		padding:0;
-	}
-}
-
-.consoleContainer{
-	width:100%; 
-	.console{
-		.output{
-			width:100%;
-			height:360px;
-			color:white;
-			overflow: auto;
-			position:relative;
-			.content{
-				position:absolute;
-				left:20px;
-				top:20px;
-				right:20px;
-				bottom:20px; 
-				overflow-y:scroll; 
-				white-space:pre-line; 
-				&::-webkit-scrollbar{ 
-					width:12px;
-				} 
-				&::-webkit-scrollbar-track{
-					background:lighten(#111,10%);
-				}
-				&::-webkit-scrollbar-thumb{
-					background: color('docker-primary','base');
-				}								
-			}
+.console-container{
+	.panel.panel-info{
+		background:#444;
+		position:relative;
+		.panel-heading{
+			position:absolute;
+			border-bottom:1px solid #333;
+			top:0;
+			left:0;
+			right:0;
 		}
-		.input{
+		.panel-body{
 			position:relative;
-			border:1px solid #ccc;
-			color:white;
-			.material-icons{
-				position:absolute;
-				top:2px;
-				left:3px;
-			}
-			input{
-				border:0;
-				font-weight:bold;
-				outline:none; 
-				padding:6px 20px; 
-				padding-left:65px;
+			height:100%;
+			width:100%;
+			padding-top:40px;
+			padding-bottom:40px;
+			form{
 				width:100%;
-				margin:0;
-				background:rgba(white,0.1); 
-				color:white; 
-				height:3em; 
+				height:100%;		
+				.console{
+					width:100%;
+					height:100%;
+					.output{
+						width:100%;
+						height:100%;
+						color:white;
+						overflow: auto;
+						position:relative;
+						.content{
+							position:absolute;
+							left:20px;
+							top:20px;
+							right:20px;
+							bottom:20px; 
+							overflow-y:scroll; 
+							white-space:pre-line; 
+							&::-webkit-scrollbar{ 
+								width:12px;
+							} 
+							&::-webkit-scrollbar-track{
+								background:lighten(#111,10%);
+							}
+							&::-webkit-scrollbar-thumb{
+								background: color('docker-primary','base');
+							}								
+						}
+					}
+					.input{
+						position:absolute;
+						bottom:0;
+						left:0;
+						right:0;
+						border-top:1px solid #333;
+						color:white;
+						.material-icons{
+							position:absolute;
+							top:2px;
+							left:3px;
+						}
+						input{
+							border:0;
+							font-weight:bold;
+							outline:none; 
+							padding:6px 20px; 
+							padding-left:65px;
+							width:100%;
+							margin:0;
+							background:rgba(white,0.1); 
+							color:white; 
+							height:3em; 
+						}
+					}				
+				}
 			}
 		}
 	}

@@ -1,6 +1,5 @@
 angular.module("app").controller('MainLeftPanelController', function($scope, $location, $resource, AuthenticationService, DockerResource) {
   
-  
   $scope.containers = []; 
   $scope.images = [];
   $scope.composes = []; 

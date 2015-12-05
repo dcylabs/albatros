@@ -1,10 +1,11 @@
-angular.module("app").controller('ContainerController', function($scope, $routeParams, $location, $templateCache, $filter, DockerResource) { 
+angular.module("app").controller('ContainerController', function($scope, $routeParams, $location, $templateCache, $timeout, $filter, DockerResource) { 
   
   $scope.id = $routeParams.id; 
   $scope.container = false;
   $scope.logs = "";
   $scope.console = "";
 
+  var topTimer = false;
   var dataStream = false; 
 
   $scope.rename = function(){
@@ -59,12 +60,16 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   $scope.refreshTop = function(){
     DockerResource.Containers.top({id:$routeParams.id}, function(data){
       $scope.top = data; 
+      if($scope.container.State.Running){
+        topTimer = $timeout($scope.refreshTop, 1000);
+      }else{
+        topTimer = $timeout($scope.refreshTop, 10000);
+      }
     });
   };
 
   $scope.refreshLogs = function(){
     DockerResource.Containers.logs({id:$routeParams.id},function(data){
-      //$scope.logs = resourceDataToStr(data);
       $scope.logs = data;
     });
   };
@@ -114,7 +119,6 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
     }
   };
  
-
   $scope.initConsole = function(){
     if(dataStream){
       dataStream.close();
@@ -131,11 +135,20 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 	$scope.refreshContainer = function(){
   	DockerResource.Containers.get({id:$routeParams.id}, function(data){
       $scope.container = data; 
+      if($scope.container.isUp){
+
+      }
     });
     $scope.refreshTop(); 
     $scope.refreshLogs(); 
     $scope.initConsole();
 	}; 
+
+  $scope.$on('$destroy',function(){
+    if(topTimer !== false){
+      $timeout.cancel(topTimer);  
+    }
+  });
 
   $scope.refreshContainer(); 
   

@@ -26,6 +26,11 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: 'ImageController'
   }); 
 
+  $routeProvider.when('/imagePull', {
+    templateUrl: 'image/imagePull.html',
+    controller: 'ImagePullController'
+  }); 
+
   $routeProvider.otherwise({ redirectTo: '/containers' });
 
 });

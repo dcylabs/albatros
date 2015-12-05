@@ -1,0 +1,50 @@
+.searchBlock{
+	padding:20px;
+	text-align:center;
+	.form-control{
+		display:inline-block;
+		width:30%;
+	}
+}
+.hubTable{
+	width:100%;
+	background:white;
+	border:1px solid #ccc;
+	tr{
+		td:first-child, td:last-child{
+			text-align:center;
+			width:1px;
+		}
+		td{
+			padding:15px;
+			border-bottom:1px solid #ccc;
+			vertical-align:middle;
+			img{
+				width:80px;
+				height:80px; 
+				padding:15px;
+				border-radius:4px;
+			}
+			&.info{
+				padding:15px 40px;
+				text-align:left;
+				.name{
+					color: color('docker-primary','base');
+					font-weight:bold;
+				}
+				.description{
+					font-style:italic;
+				}				
+			}
+			&.stars{
+				padding: 15px 40px;
+				text-align:center;
+				font-size:1.2em;
+				.star_label{
+					top:10px;
+					position:relative;
+				}
+			}
+		}
+	}
+}

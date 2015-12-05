@@ -18,6 +18,6 @@ angular.module("app").controller('ContainersController', function($scope, Docker
 	  	});
 	};
 
-  $scope.refreshContainers(); 
+  	$scope.refreshContainers(); 
 
 });
