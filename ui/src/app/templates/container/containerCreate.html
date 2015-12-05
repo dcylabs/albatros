@@ -1,0 +1,157 @@
+<div class="toolbar-container">
+	<div class="headbar new-container">
+		<div class="pageName"> Container </div>
+		<div class="subName"> Create </div>
+	</div>
+	<div class="toolbar">
+		Create a container from a stored image 
+	</div>
+</div>
+
+<div class="col-md-6">	
+	<div class="panel panel-info light">
+		<div class="panel-heading"> BASIC CONFIGURATION </div>
+		<div class="panel-body">
+			
+			<table class="form">
+				<tr>
+					<th> Image* </th>
+					<td>
+						<select required class="form-control" ng-model="container.Image">
+							<option ng-repeat="image in images|filter:{isFinalImage:true}|orderBy:'shortName'" value="{{image.shortName}}:{{image.Tag}}">
+								{{image.shortName}}:{{image.Tag}}
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th> Name </th>
+					<td>
+						<input required class="form-control" type="text" ng-model="container.name"/>
+					</td>
+				</tr>	
+				<tr>
+					<th> Cmd </th>
+					<td>
+						<input required class="form-control" type="text" ng-model="container.CmdString"/>
+					</td>
+				</tr>					
+				<tr>
+					<th> HostName </th>
+					<td>
+						<input class="form-control" type="text" ng-model="container.HostName"/>
+					</td>
+				</tr>	
+				<tr>
+					<th> WorkingDir </th>
+					<td>
+						<input class="form-control" type="text" ng-model="container.WorkingDir"/>
+					</td>
+				</tr>	
+				<tr>
+					<th> Tty </th>
+					<td>
+						<input type="checkbox" ng-model="container.Tty"/>
+					</td>
+				</tr>	
+				<tr>
+					<th> OpenStdin </th>
+					<td>
+						<input type="checkbox" ng-model="container.OpenStdin"/>
+					</td>
+				</tr>					
+			</table>
+		</div>
+	</div>
+
+	<div class="panel panel-info light">
+		<div class="panel-heading"> ENVIRONNMENT </div>
+		<div class="panel-body">
+			<table class="form list">
+				<tr ng-repeat="(key, value) in container.Env track by $index">
+					<td>
+						<input class="form-control" type="text" ng-model="container.Env[key]" placeholder="GOPATH=/root/GoWorkspace"/>
+					</td>
+					<td>
+						<a class="btn btn-danger" ng-click="container.Env.splice(key,1)"> 
+							Delete
+						</a>
+					</td>
+				</tr>					
+			</table>
+			<a class="btn btn-primary" ng-click="container.Env.push('')"> Add </a>
+		</div>
+	</div>	
+
+</div>
+
+<div class="col-md-6">
+
+	<div class="panel panel-info light">
+		<div class="panel-heading"> BINDS </div>
+		<div class="panel-body">
+			<table class="form list">
+				<tr ng-repeat="(key, value) in container.HostConfig.Binds track by $index">
+					<td>
+						<input class="form-control" type="text" ng-model="container.HostConfig.Binds[key]" placeholder="/path/to/file/in/host:/path/to/file/in/container"/>
+					</td>
+					<td>
+						<a class="btn btn-danger" ng-click="container.HostConfig.Binds.splice(key,1)"> 
+							Delete
+						</a>
+					</td>
+				</tr>					
+			</table>
+			<a class="btn btn-primary" ng-click="container.HostConfig.Binds.push('')"> Add </a>
+		</div>
+	</div>	
+
+
+	<div class="panel panel-info light">
+		<div class="panel-heading"> LINKS </div>
+		<div class="panel-body">
+			<table class="form list">
+				<tr ng-repeat="(key, value) in container.HostConfig.Links track by $index">
+					<td>
+						<input class="form-control" type="text" ng-model="container.HostConfig.Links[key]" placeholder="mysql:mysql"/>
+					</td>
+					<td>
+						<a class="btn btn-danger" ng-click="container.HostConfig.Links.splice(key,1)"> 
+							Delete
+						</a>
+					</td>
+				</tr>					
+			</table>
+			<a class="btn btn-primary" ng-click="container.HostConfig.Links.push('')"> Add </a>
+		</div>
+	</div>	
+
+
+	<div class="panel panel-info light">
+		<div class="panel-heading"> PORTS </div>
+		<div class="panel-body">
+			<table class="form list">
+				<tr ng-repeat="(key, value) in container.HostConfig.Ports track by $index">
+					<td>
+						<input class="form-control" type="text" ng-model="container.HostConfig.Ports[key]" placeholder="80:80 or 127.0.0.1:80:80 or 127.0.0.1:5000:5000/udp"/>
+					</td>
+					<td>
+						<a class="btn btn-danger" ng-click="container.HostConfig.Ports.splice(key,1)"> 
+							Delete
+						</a>
+					</td>
+				</tr>					
+			</table>
+			
+			<a class="btn btn-primary" ng-click="container.HostConfig.Ports.push('')"> Add </a>
+			
+		</div>
+	</div>	
+
+</div>
+
+<div class="col-md-12">
+	<span class="btn btn-success pull-right" ng-click="create()">
+		Create
+	</span>
+</div>

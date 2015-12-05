@@ -40,7 +40,7 @@
 			$color: color('docker-green','base');
 			$border-color: darken($color,5%);
 			background: $color;
-			border-color: $border-color;
+			border-color: $border-color; 
 		}		
 		&.down{
 			$color: color('docker-red','base');
@@ -48,6 +48,30 @@
 			background: $color;
 			border-color: $border-color;			
 		}
+		&.new-container{
+			$color: color('docker-orange','base');
+			$dcolor: darken($color,5%);
+			$border-color: darken($color,5%);				
+			background: repeating-linear-gradient(-55deg,
+				$color,
+				$color 10px,
+				$dcolor 10px,
+				$dcolor 20px 
+			);
+			border-color: $border-color;			
+		}
+		&.new-image{
+			$color: color('docker-primary','base');
+			$dcolor: darken($color,5%);
+			$border-color: darken($color,5%);				
+			background: repeating-linear-gradient(-55deg,
+				$color,
+				$color 10px,
+				$dcolor 10px,
+				$dcolor 20px 
+			);
+			border-color: $border-color;			
+		}		
 	}
 
 	.toolbar{

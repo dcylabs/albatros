@@ -9,10 +9,24 @@ module.exports = function(grunt){
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		watch:{
+			js:{
+				files:['src/app/js/**/*.js'],
+				tasks:['ngAnnotate','concat','uglify']
+			},
+			css:{
+				files:['src/app/css/**/*.scss'],
+				tasks:['sass']
+			},
+			html:{
+				files:['src/app/**/*.html'], 
+				tasks:['template','ngtemplates','ngAnnotate','concat','uglify']
+			}
+		},
 		sass: {                             
 	    	dist: {       
       			options: {
-        			style: 'expanded'
+        			style: 'compressed'
       			},
       			files: {                   
         			'build/css/app.css': 'src/app/css/app.scss',
@@ -44,13 +58,7 @@ module.exports = function(grunt){
       					cwd: 'temp/pages/',
       					src: ['**'], 
       					dest: 'build/'
-      				},
-      				{
-      					expand: true, 
-      					cwd: 'temp/templates/',
-      					src: ['**'], 
-      					dest: 'build/templates'
-      				}       				     				
+      				}    				     				
       			]
   			}
 		},
@@ -132,6 +140,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-template');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('build', [
 		'clean:build',

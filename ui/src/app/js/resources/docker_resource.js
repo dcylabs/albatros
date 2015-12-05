@@ -92,7 +92,7 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 			// Actions 
 		'list'		: {method: 'GET'	, params: {format: 'json'}, isArray: true, transformResponse: containerTransformer},
 		'get' 		: {method: 'GET'	, params: {id: '@id', format: 'json'}}, 
-		'create'	: {method: 'GET'	, params: {action: 'create'}},
+		'create'	: {method: 'POST'	, params: {action: 'create'}},
 
 		'top' 		: {method: 'GET'	, params: {id: '@id', action: 'top', ps_args: 'aux'}}, 
 		'logs' 		: {method: 'GET'	, params: {id: '@id', action: 'logs', tail: 20, stdout: 1, stderr:1, isArray: true}}, 

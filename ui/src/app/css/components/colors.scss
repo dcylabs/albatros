@@ -55,3 +55,10 @@ $colors: map-merge($colors, (
   @return null;
 }
 
+
+// extending bootstrap colors 
+$brand-primary: color('docker-primary','base');
+$brand-success: color('docker-green','base');
+$brand-info:    color('docker-secondary','base');
+$brand-warning: color('docker-orange','base');
+$brand-danger:  color('docker-red','base');

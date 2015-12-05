@@ -147,12 +147,31 @@
 	}
 	.panel-body{
 		font-size:0.8em;
+		> .btn{
+			margin:5px;
+		}
 	}
 	table{
 		width:100%;
 		td,th{
 			padding:0 5px;
 		}	
+		&.form{
+			th,td{
+				height:45px;
+				vertical-align:middle;
+				.form-control{
+					background:rgba(white,0.5);
+				}
+			}
+			&.list{
+				tr{
+					td:last-child{
+						width:1px;
+					}
+				}
+			}
+		}
 		&.configuration{	
 			th{
 				width:20%;

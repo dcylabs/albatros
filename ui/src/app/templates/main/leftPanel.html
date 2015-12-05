@@ -6,6 +6,7 @@
     Containers
     <a class="material-icons" ng-click="refreshContainers()"> refresh </a>
     <a class="material-icons" href="#/containers"> list </a>
+    <a class="material-icons" href="#/containerCreate"> add </a>
   </div>
   <ul class="containers">
     <li ng-repeat="container in filteredContainers = (containers | filter: { shortName: query } | limitTo: 3) ">
