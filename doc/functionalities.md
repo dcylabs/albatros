@@ -33,7 +33,7 @@ The icons on the right of the toolbar are separated in sections :
 ![Containers up](/doc/screenshots/container_up.png)
 
 ### create 
-#You can create a container for a stored image (note that you can pull an image from the hub, see the [images pull section](#pull) ! ) 
+You can create a container for a stored image (note that you can pull an image from the hub, see the [images pull section](#pull) ! ) 
 
 ![Containers create](/doc/screenshots/container_create.png)
 
