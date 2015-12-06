@@ -1,4 +1,4 @@
-angular.module("app").controller('ImageController', function($scope, $routeParams, $filter, DockerResource) { 
+angular.module("app").controller('ImageController', function($scope, $routeParams, $filter, $location, DockerResource) { 
   
 	$scope.id = $routeParams.id; 
 	$scope.image = {
@@ -10,7 +10,10 @@ angular.module("app").controller('ImageController', function($scope, $routeParam
  		// To improve
 		DockerResource.Images.remove({id:$routeParams.id}, function(data){
       var result = resourceDataToStr(data); 
-      resultAct((result[0] == '['), 'Successfully removed !', data);    
+      resultAct((result.indexOf('[') === 0), 'Successfully removed !', data);    
+      if(result.indexOf('[') === 0){
+        $location.path('/images');  
+      }
   	}); 
   };
 

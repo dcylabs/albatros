@@ -1,3 +1,8 @@
+# About
+* [Functionalities](https://github.com/dcylabs/albatros/tree/master/doc/functionalities.md)
+* [Changelog](https://github.com/dcylabs/albatros/tree/master/doc/changelog.md)
+* [Contribute](https://github.com/dcylabs/albatros/tree/master/doc/contribute.md)
+
 # Usages 
 ## Deployment 
 ### Docker 
@@ -46,9 +51,6 @@ You can easily configure with the *config.json*
 
 ```
 # Roadmap
-## Referenced bugs
- - [All] Cleaning code
- - [Container/Details] Container top overflow on laptop screens
 
 ## Improving UI/UX
 The UI/UX is not in its final state, all recommendations are welcome ! :) 

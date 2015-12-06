@@ -150,8 +150,6 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   });
 
   $scope.refreshContainer(); 
-  
-
 
 });
 

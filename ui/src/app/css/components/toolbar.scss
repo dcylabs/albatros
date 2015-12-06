@@ -1,13 +1,10 @@
 .toolbar-container{
 	padding:10px;
-	$color: color('docker-orange','base');
-	$border-color: darken($color,5%);
 	.headbar{
 		position:relative;
 		padding:6px 20px;
 		color:white;
-		background: $color;
-		border:1px solid $border-color; 
+		border:1px solid; 
 		border-bottom-width:2px; 
 		.pageName, .subName{
 			display:inline-block;
@@ -30,23 +27,33 @@
 			background: rgba(white,0.3);
 			border:2px solid rgba(white,0.6);
 		}
+		&.containers{
+			$color: color('docker-orange','base');
+			$border-color: darken($color,5%);
+			background: $color;
+			border-color: $border-color;		
+			box-shadow: 0 0 5px $color;
+		}
 		&.images{
 			$color: color('docker-primary','base');
 			$border-color: darken($color,5%);
 			background: $color;
 			border-color: $border-color;
+			box-shadow: 0 0 5px $color;
 		}
 		&.up{
 			$color: color('docker-green','base');
 			$border-color: darken($color,5%);
 			background: $color;
 			border-color: $border-color; 
+			box-shadow: 0 0 5px $color;
 		}		
 		&.down{
 			$color: color('docker-red','base');
 			$border-color: darken($color,5%);				
 			background: $color;
 			border-color: $border-color;			
+			box-shadow: 0 0 5px $color;
 		}
 		&.new-container{
 			$color: color('docker-orange','base');
@@ -59,6 +66,7 @@
 				$dcolor 20px 
 			);
 			border-color: $border-color;			
+			box-shadow: 0 0 5px $color;
 		}
 		&.new-image{
 			$color: color('docker-primary','base');
@@ -71,6 +79,7 @@
 				$dcolor 20px 
 			);
 			border-color: $border-color;			
+			box-shadow: 0 0 5px $color;
 		}		
 	}
 	.toolbar{
@@ -84,6 +93,7 @@
 		border:1px solid $border-color; 
 		border-top:0;
 		border-bottom-width:2px; 
+		box-shadow: 0 0 10px;
 		input{ 
 			display:inline-block;
 			width: auto; 
