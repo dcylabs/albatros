@@ -1,4 +1,4 @@
-angular.module("app").controller('MainAuthController', function(AuthenticationService, $templateCache, $location, $rootScope) {
+angular.module("app").controller('MainAuthController', function($templateCache, $rootScope, AuthenticationService) {
   
   var template = $($templateCache.get('main/loginForm.html'));
 

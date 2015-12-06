@@ -1,21 +1,14 @@
 package server
 
 import (
-	//"fmt"
-	//"time"
-	
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"io"
-	//"strings"
 	"code.google.com/p/go.net/websocket"
 	"albatros-server/helpers" 
 )
 
-/*
-	ws://146.19.18.189:8080/dockerapi_us/containers/dcylabs_private_blog_php/attach/ws?logs=1&stream=1&stdout=1
-*/
 // DockerHandler 
 type DockerHandler struct {
 	dockerEndpoint string

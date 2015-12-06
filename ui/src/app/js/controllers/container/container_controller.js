@@ -28,7 +28,6 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
     });
   };
    
-
   $scope.start = function(){
     DockerResource.Containers.start({id:$routeParams.id}, function(data){
       $scope.refreshContainer(); 
@@ -60,7 +59,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   $scope.refreshTop = function(){
     DockerResource.Containers.top({id:$routeParams.id}, function(data){
       $scope.top = data; 
-      if($scope.container.State.Running){
+      if($scope.container.State && $scope.container.State.Running){
         topTimer = $timeout($scope.refreshTop, 1000);
       }else{
         topTimer = $timeout($scope.refreshTop, 10000);

@@ -9,6 +9,9 @@ module.exports = function(grunt){
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		jshint:{
+			all: ['src/app/js/**/*.js']
+		},
 		watch:{
 			js:{
 				files:['src/app/js/**/*.js'],
@@ -141,9 +144,12 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-template');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	grunt.registerTask('build', [
 		'clean:build',
+
+		'jshint',
 
 		'template',
 		'ngtemplates',

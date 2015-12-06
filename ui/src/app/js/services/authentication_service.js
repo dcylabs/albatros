@@ -1,4 +1,4 @@
-angular.module("app").service('AuthenticationService', function($rootScope, $http, $q, $resource, $timeout) { 	
+angular.module("app").service('AuthenticationService', function($rootScope, $http, $q, $timeout) { 	
   	var thys = this; 
     thys.timeout = false;
     $rootScope.isLoggedIn = false; 
@@ -20,7 +20,7 @@ angular.module("app").service('AuthenticationService', function($rootScope, $htt
               thys.login(credentials); 
             }, (data.Expire-10)*1000);
             $rootScope.isLoggedIn = true; 
-      			$http.defaults.headers.common["Authorization"] = "Bearer "+data.Token;
+      			$http.defaults.headers.common.Authorization = "Bearer "+data.Token;
   	    		deferred.resolve(data.Token);
       		}      	
       	});

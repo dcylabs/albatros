@@ -1,4 +1,4 @@
-angular.module("app").controller('ImageController', function($scope, $routeParams, $filter, $location, DockerResource) { 
+angular.module("app").controller('ImageController', function($scope, $routeParams, $filter, DockerResource) { 
   
 	$scope.id = $routeParams.id; 
 	$scope.image = {

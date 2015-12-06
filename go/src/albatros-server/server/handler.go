@@ -9,9 +9,6 @@ import (
 	"albatros-server/helpers" 
 )
 
-
-
-
 func CreateHandlers(settings config.Settings) http.Handler {
 	mux	:= http.NewServeMux()
 	var dockerHandler http.Handler
@@ -35,16 +32,3 @@ func CreateHandlers(settings config.Settings) http.Handler {
 
 	return mux
 }
-
-
-
-	
-
-
-	/*
-	conn, err := net.Dial("unix", "/var/run/docker.sock")
-	fmt.Fprintf(conn, "GET /containers/json HTTP/1.0\r\n\r\n")
-	end, err := bufio.NewReader(conn).ReadString(']')
-	if(err == err){}
-	fmt.Printf("%s \n", end)
-	*/

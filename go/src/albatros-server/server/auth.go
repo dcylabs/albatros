@@ -24,8 +24,6 @@ func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 		}
 		decoder.Decode(&reqData)
 
-
-
 		valid, user := h.validate(reqData.Username, reqData.Password)
 		if(valid){
 
@@ -44,7 +42,7 @@ func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 
 		}else{
 			var data struct{Error string}
-			data.Error = fmt.Sprintf("%s", "Please provide a username and password")
+			data.Error = fmt.Sprintf("%s", "Please provide a valid username and password")
 			response, _ := json.Marshal(data)
 			fmt.Fprintf(w, "%s", response)	
 		}

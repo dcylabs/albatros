@@ -1,4 +1,4 @@
-angular.module("app").service("DockerResource", function($q, $resource, $websocket, $location, $http, ImageRecommendedService) {
+angular.module("app").service("DockerResource", function($resource, $websocket, $location, $http, ImageRecommendedService) {
   	var thys = this; 
 
   	thys.relApiPath = '/dockerapi'; 
@@ -69,12 +69,7 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 		return angular.fromJson(datas[datas.length - 1]); 
 	};
 
-  	var isLoggedIn = function(){
-  		return (typeof($http.defaults.headers.common["Authorization"]) !== 'undefined');
-  	};
-
 	thys.getConsoleContainer = function(config){
-		if(!isLoggedIn()){ return false; }
 		var options = _.defaults(config || {}, {
 			id 	  	: null,
 			stream	: true, 
@@ -89,7 +84,7 @@ angular.module("app").service("DockerResource", function($q, $resource, $websock
 				string += prop+'='+(options[prop]?1:0)+'&';
 			});
 			string += 'token='; 
-			string += $http.defaults.headers.common["Authorization"].replace('Bearer ',''); 
+			string += $http.defaults.headers.common.Authorization.replace('Bearer ',''); 
 			return string;
 		};
 		

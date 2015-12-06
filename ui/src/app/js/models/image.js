@@ -17,7 +17,8 @@ var ImageModel = function(data){
 	if(thys.shortName === "<none>:<none>"){
 		thys.shortName = thys.Id.substr(0,12);
 	}else{
-		if(tag = thys.shortName.match(/:(.*)$/)){
+		var tag = thys.shortName.match(/:(.*)$/);
+		if(tag){
 			thys.Tag = tag[1]; 
 		}
 		thys.isFinalImage = true; 
@@ -28,7 +29,8 @@ var ImageModel = function(data){
 	thys.hasRepo = false;
 	thys.Repository = '';
 	thys.Name = thys.shortName;
-	if(matches = thys.shortName.match(/^(.*)\/(.*)$/)){
+	var matches = thys.shortName.match(/^(.*)\/(.*)$/);
+	if(matches){
 		thys.hasRepo = true;
 		thys.Repository = matches[1]; 
 		thys.Name = matches[2]; 
