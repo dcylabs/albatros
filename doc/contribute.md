@@ -21,7 +21,7 @@ docker run -ti --rm \
 ./albatros-start &2> /dev/null
 ```
 
-* Go to the ui and run 
+* Go to the `ui` directory and run 
 
 ```
 npm install 
