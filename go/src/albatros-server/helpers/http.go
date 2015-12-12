@@ -6,14 +6,19 @@ import (
 )
 
 func IsWebsocket(req *http.Request) bool {
-	conn_hdr := ""
 	conn_hdrs := req.Header["Connection"]
-	if len(conn_hdrs) > 0 {
-		conn_hdr = conn_hdrs[0]
+	upgrade_connection := false;
+	if (len(conn_hdrs) > 0) {
+		for _, conn_hdr := range strings.Split(conn_hdrs[0], ","){
+			if (strings.ToLower(strings.Trim(conn_hdr, " ")) == "upgrade"){
+				upgrade_connection = true
+				break
+			}
+		}
 	}
 
 	upgrade_websocket := false
-	if strings.ToLower(conn_hdr) == "upgrade" {
+	if (upgrade_connection) {
 		upgrade_hdrs := req.Header["Upgrade"]
 		if len(upgrade_hdrs) > 0 {
 			upgrade_websocket = (strings.ToLower(upgrade_hdrs[0]) == "websocket")
