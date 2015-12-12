@@ -111,7 +111,7 @@
 						</div>
 						<div class="input">
 							<i class="material-icons">chevron_right</i>
-							<input type="text" ng-model="command" placeholder="Enter command here" />
+							<input type="text" ng-keydown="handleConsoleKeyboard($event)" ng-model="command" placeholder="Enter command here" />
 						</div>
 					</div>
 				</form>
