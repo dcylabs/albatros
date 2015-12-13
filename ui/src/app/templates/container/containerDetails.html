@@ -104,14 +104,14 @@
 		<div class="panel panel-info">
 			<div class="panel-heading"> CONSOLE </div>
 			<div class="panel-body">
-				<form ng-submit="send()" class="consoleContainer">
+				<form class="consoleContainer">
 					<div class="console">
 						<div class="output">
 							<div class="content" ng-bind-html="console | termStyle"></div>
 						</div>
 						<div class="input">
 							<i class="material-icons">chevron_right</i>
-							<input type="text" ng-keydown="handleConsoleKeyboard($event)" ng-model="command" placeholder="Enter command here" />
+							<input type="text" ng-keydown="handleConsoleKeyboard($event)" ng-keypress="handleConsoleKeyboard($event)" ng-model="command" placeholder="Enter command here" />
 						</div>
 					</div>
 				</form>

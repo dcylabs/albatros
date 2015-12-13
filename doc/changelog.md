@@ -1,5 +1,10 @@
 # Changelog 
 
+## [0.2.1]
+* Improved live console to handle ctrl+key, tab, etc
+* Fixed websocket detection for Firefox 
+* Removed residual console.log
+
 ## [0.2.0]
 * Cleaned code
 * Solved top overflow on laptop screens

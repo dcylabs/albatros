@@ -34,7 +34,8 @@
 							right:20px;
 							bottom:20px; 
 							overflow-y:scroll; 
-							white-space:pre-line; 
+							white-space:pre; 
+							font-family: 'consolas';
 							&::-webkit-scrollbar{ 
 								width:12px;
 							} 
