@@ -12,7 +12,6 @@ docker run -d \
  -v ~/config.json:/var/albatros/config.json:ro \
  -v ~/key.pem:/var/albatros/key.pem:ro \
  -v ~/cert.pem:/var/albatros/cert.pem:ro \
- -v /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro \
  -p "80:80" -p "443:443" dcylabs/albatros
 ```
 ### docker-compose.yml 
@@ -24,7 +23,6 @@ albatros:
     - ~/config.json:/var/albatros/config.json:ro
     - ~/key.pem:/var/albatros/key.pem:ro
     - ~/cert.pem:/var/albatros/cert.pem:ro
-    - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
   ports:
     - "80:80"
     - "443:443"

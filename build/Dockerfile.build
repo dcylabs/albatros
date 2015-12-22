@@ -4,6 +4,7 @@ MAINTAINER Dcylabs <dcylabs@gmail.com>
 # Installing all build tools 
 RUN apt-get update 
 RUN apt-get install -y golang ruby curl nodejs-legacy npm git-core mercurial
+RUN apt-get install -y ca-certificates
 RUN npm install -g bower grunt-cli
 RUN gem install sass 
 

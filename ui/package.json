@@ -4,7 +4,7 @@
   "title": "Remotely manage your Docker server",
   "license": "MIT",
   "homepage": "https://github.com/dcylabs/albatros",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.9",

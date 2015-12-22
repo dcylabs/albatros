@@ -118,7 +118,6 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
     if(dataStream){
       dataStream.onMessage(function(message){
         $scope.console += message.data;
-        console.log(message.data);
         $('.console .output .content').stop().animate({scrollTop: $('.console .output .content')[0].scrollHeight},100);
       });
     }     
