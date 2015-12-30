@@ -75,7 +75,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 
   $scope.downloadLogs = function(){ 
     DockerResource.Containers.logs({id:$routeParams.id, tail:false},function(data){
-      var logs = $filter('termStyle')(data);
+      var logs = $filter('termStyle')(resourceDataToStr(data));
       var template = $templateCache.get('container/containerLogs.html');
       var html = template.replace('{{data}}',logs).replace('{{host}}',window.location.host);
       window.open('data:text/html;charset=utf-8,'+encodeURIComponent(html), '_blank');
