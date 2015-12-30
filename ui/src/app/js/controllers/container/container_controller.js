@@ -142,9 +142,8 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 	}; 
 
   $scope.$on('$destroy',function(){
-    if(topTimer !== false){
+      dataStream.close();
       $timeout.cancel(topTimer);  
-    }
   });
 
   $scope.refreshContainer(); 
