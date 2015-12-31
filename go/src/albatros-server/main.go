@@ -25,6 +25,11 @@ func main(){
 	jsonParser := json.NewDecoder(configFile)
 	jsonParser.Decode(&settings)
 
+	// Force session to be at least a minute
+	if(settings.SessionTime < 60){
+		settings.SessionTime = 60
+	}
+
 	handler := server.CreateHandlers(settings)
 	
 	// Encapsulated in subroutine to listen both HTTP and HTTPs

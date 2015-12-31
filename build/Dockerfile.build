@@ -35,5 +35,5 @@ RUN rm -rf /var/albatros/go
 
 # Copy files to dist dir
 COPY build/copy_dist.sh /var/albatros/copy_dist.sh
-RUN chmod +x /var/albatros/copy_dist.sh 
+RUN chmod +x /var/albatros/copy_dist.sh
 ENTRYPOINT ["/var/albatros/copy_dist.sh"]

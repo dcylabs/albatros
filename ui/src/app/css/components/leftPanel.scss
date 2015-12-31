@@ -75,13 +75,13 @@
 		}
 	}
 	.brand{
+		$appLinks_height: 60px;
 		position:absolute;
 		bottom:0;
 		left:0;
 		right:0;
 		padding:20px;
 		text-align:center;
-		pointer-events: none;
 		.logo, .title, .subtitle, .version{
 			opacity:0.3;
 		}
@@ -107,6 +107,15 @@
 		.version{
 			font-size:0.7em;
 		}
+		.appLinks{
+			padding:10px;
+			height:$appLinks_height;
+			a{
+				img{
+					height:100%;
+				}
+			}
+	}		
 	}
 }
 

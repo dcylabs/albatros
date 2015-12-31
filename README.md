@@ -3,6 +3,11 @@
 * [Changelog](https://github.com/dcylabs/albatros/tree/master/doc/changelog.md)
 * [Contribute](https://github.com/dcylabs/albatros/tree/master/doc/contribute.md)
 
+# Android app
+Kind of an "android extension" of that WebUI which allow you to keep an eye on your servers wherever you are. 
+
+[![Get it on Google Play](https://raw.githubusercontent.com/dcylabs/albatros/master/doc/images/en-play-badge-border.png)](https://play.google.com/apps/testing/com.dcylabs.albatros/)
+
 # Usages 
 ## Deployment 
 ### Docker 

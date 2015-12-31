@@ -53,10 +53,18 @@
   </ul>      
 
   <div class="brand">
-    <div class="logo loading"></div>
-    <div class="title"> Albatros </div>
-    <div class="subtitle"> Manage your Docker </div>
-    <div class="version"> <%= pkg.version %> </div>
+    <div class="no-pointer-events">
+      <div class="logo loading"></div>
+      <div class="title"> Albatros </div>
+      <div class="subtitle"> Manage your Docker </div>
+      <div class="version"> <%= pkg.version %> </div>
+    </div>
+    <div class="appLinks">
+      <a href="https://play.google.com/apps/testing/com.dcylabs.albatros" target="_blank" style="opacity:0.6">
+        <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" />
+      </a>
+    </div>    
+
   </div>
 
   <div class="loader {{isLoading?'loading':''}}">

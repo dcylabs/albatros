@@ -5,8 +5,8 @@ angular.module("app").filter('termStyle', function($sce) {
         TODO HANDLE REWRITE FROM TOP "\e[H"
       */
 
-      // Dont know why in attach as websocket streamSize is 3 ( 4 in the doc )
-      streamSize = streamSize || 4;
+      // Dont know why streamSize is 3 ( 4 in the doc )
+      streamSize = streamSize || 3;
 
       var html = data; 
       var regex = {

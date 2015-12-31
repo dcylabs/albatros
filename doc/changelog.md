@@ -1,5 +1,14 @@
 # Changelog 
 
+## [0.3.0]
+* Added link to Android app
+* Added default config.json for demo/quick install
+* Added sessionTime >= 60 seconds
+* Fixed controller destroy
+* Fixed full logs view
+* Fixed build scripts
+* Removed docker logs headers
+
 ## [0.2.2]
 * Embedded ca-certificates.crt
 * Fixed Firefox css issue

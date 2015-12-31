@@ -16,6 +16,9 @@
 html{ 
 	body{ 
 		background: #f8f8f8;
+		.no-pointer-events{
+			pointer-events: none;
+		}
 		.sweet-alert{
 			hr{
 				height:0;
