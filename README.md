@@ -6,7 +6,7 @@
 # Android app
 Kind of an "android extension" of that WebUI which allow you to keep an eye on your servers wherever you are. 
 
-[![Get it on Google Play](https://raw.githubusercontent.com/dcylabs/albatros/master/doc/images/en-play-badge-border.png)](https://play.google.com/apps/testing/com.dcylabs.albatros/)
+[![Get it on Google Play](https://raw.githubusercontent.com/dcylabs/albatros/master/doc/images/en-play-badge-border.png)](https://play.google.com/store/apps/details?id=com.dcylabs.albatros)
 
 # Quick run
 Default username is `username` and default password is `password`
