@@ -24,7 +24,7 @@ angular.module("app").filter('termStyle', function($sce) {
       html = html.replace(regex.nul   ,''); 
 
       html = html.replace(regex.stdout  ,'</span><span class="termStyle-stdout">'); 
-      html = html.replace(regex.stderr  ,'</span><span class="termStyle-stderr">');     
+      html = html.replace(regex.stderr  ,'</span><span class="termStyle-stderr">');           
       html = html.replace(regex.style   ,'</span><span class="termStyle-$1 termStyle-$2">'); 
             
       while(html.match(regex.back)){

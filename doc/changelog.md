@@ -1,5 +1,13 @@
 # Changelog 
 
+## [0.4.0]
+* Added error handling to remove logs 
+* Fixed panics
+* Fixed big error logs generation
+* Fixed memory leaks
+* Fixed console websocket handling
+* Fixed loading animation loop 
+
 ## [0.3.0]
 * Added link to Android app
 * Added default config.json for demo/quick install

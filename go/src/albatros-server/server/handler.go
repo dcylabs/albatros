@@ -11,23 +11,23 @@ import (
 
 func CreateHandlers(settings config.Settings) http.Handler {
 	mux	:= http.NewServeMux()
-	var dockerHandler http.Handler
+	var authDockerHandler http.Handler
 	var kitematicHandler http.Handler
-	var authHandler http.Handler
+	var loginHandler http.Handler
 	var appHandler http.Handler
 
+	dockerHandler := DockerHandler{settings.DockerEndpoint}
 	jwtStorage := jwtstore.New(settings.Secret, time.Second*time.Duration(settings.SessionTime))
-	tokenAuth := tauth.NewTokenAuth(nil, helpers.UnauthorizedHandler, jwtStorage, &helpers.AlbatrosAuthGetter{Parameter:"token"} )
 
-	dockerHandler 		= DockerHandler{settings.DockerEndpoint}
+	authDockerHandler 	= tauth.NewTokenAuth(dockerHandler, helpers.UnauthorizedHandler, jwtStorage, &helpers.AlbatrosAuthGetter{Parameter:"token"} )
 	kitematicHandler	= KitematicHandler{}
-	authHandler 		= AuthHandler{*jwtStorage, settings}
+	loginHandler 		= AuthHandler{*jwtStorage, settings}
 	appHandler 			= http.FileServer(http.Dir(settings.AppPath))
 
 	
-	mux.HandleFunc(	"/dockerapi/", 	tokenAuth.HandleFunc(http.StripPrefix("/dockerapi", dockerHandler).ServeHTTP))
+	mux.Handle(		"/dockerapi/", 	http.StripPrefix("/dockerapi", authDockerHandler))
 	mux.Handle(		"/kitematic/", 	http.StripPrefix("/kitematic", kitematicHandler))
-	mux.Handle(		"/login", 		http.StripPrefix("/login", authHandler))
+	mux.Handle(		"/login", 		http.StripPrefix("/login", loginHandler))
 	mux.Handle(		"/", 			appHandler)
 
 	return mux

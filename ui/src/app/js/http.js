@@ -6,10 +6,18 @@ angular.module("app").config(function($httpProvider) {
 				$rootScope.isLoading++;
 				return config;
 			},
+			'requestError': function(rejection){
+				$rootScope.isLoading--;
+				return rejection; 
+			},				
 			'response': function(response){
 				$rootScope.isLoading--;
 				return response; 
-			}
+			},
+			'responseError': function(rejection){
+				$rootScope.isLoading--;
+				return rejection; 
+			}		
 		};
 	});
 });

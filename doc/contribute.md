@@ -7,7 +7,7 @@
 ```
 docker run -ti --rm \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-	-v $(pwd)/config.json:/var/albatros/config.json:ro \
+	-v $(pwd)/dist/config.json:/var/albatros/config.json:ro \
     -v $(pwd)/go/src/albatros-server:/var/albatros/go/src/albatros-server:ro \
     -v $(pwd)/ui/src:/var/albatros/ui/src:ro \
     -v $(pwd)/ui/Gruntfile.js:/var/albatros/ui/Gruntfile.js:ro \
@@ -19,7 +19,9 @@ docker run -ti --rm \
 * Start the server in background 
 
 ```
-./albatros-start &2> /dev/null
+go get golang.org/x/net/websocket
+go build albatros-server
+./albatros-server &2> /dev/null
 ```
 
 * Go to the `ui` directory and run 

@@ -22,7 +22,7 @@ RUN grunt build
 ENV GOPATH '/var/albatros/go'
 RUN go get github.com/freehaha/token-auth/
 RUN go get github.com/dgrijalva/jwt-go
-RUN go get code.google.com/p/go.net/websocket
+RUN go get golang.org/x/net/websocket
 WORKDIR	/var/albatros/
 # Compiling as a fully standalone executable (used for dist)
 RUN CGO_ENABLED=0 go build -a -installsuffix cgo -tags netgo albatros-server 

@@ -1,7 +1,7 @@
 var warnAct = function(message, callback){
     swal({
       type        : 'warning',
-      text        : 'Restarting container may broke some dependencies',
+      text        : message,
       closeOnConfirm    : false, 
       showCancelButton    : true, 
       cancelButtonColor   : '#EB3E46', 

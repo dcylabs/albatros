@@ -51,6 +51,10 @@
 	}
 	.prelined{
 		white-space:pre-line;
+		word-break: break-all;
+		span{
+			display:inline;
+		}
 	}
 	.noData{
 		text-align:center;

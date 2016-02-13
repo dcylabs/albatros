@@ -1,18 +1,14 @@
 package main 
 
 import(
+	"log"
 	"flag"
 	"net/http"
 	"os"
 	"encoding/json"
 	"albatros-server/server"
 	"albatros-server/config"
-	//"code.google.com/p/go.net/websocket"
 )
-
-
-
-
 
 func main(){
 	var settings config.Settings
@@ -31,9 +27,10 @@ func main(){
 	}
 
 	handler := server.CreateHandlers(settings)
-	
+
 	// Encapsulated in subroutine to listen both HTTP and HTTPs
-	go func(){ http.ListenAndServeTLS(settings.ListenHTTPS, settings.SSLCertPath, settings.SSLKeyPath, handler) }()
-	http.ListenAndServe(settings.ListenHTTP, handler)
-	
+	go func(){ log.Println(http.ListenAndServeTLS(settings.ListenHTTPS, settings.SSLCertPath, settings.SSLKeyPath, handler)) }()
+	log.Println(http.ListenAndServe(settings.ListenHTTP, handler))
+
+
 }
