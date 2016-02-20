@@ -61,10 +61,7 @@ You can easily configure with the *config.json*
 }
 
 ```
-# Roadmap
-
-## Improving UI/UX
-The UI/UX is not in its final state, all recommendations are welcome ! :) 
-
-## Android 
-When the image will be stable enough. We will develop an android app to manage your containers through your mobile 
+Note: If you use it behind a http proxy like HAProxy you have to add the following option to your backend configuration 
+```
+option http-pretend-keepalive
+```
