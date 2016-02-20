@@ -73,7 +73,7 @@ angular.module("app").service("DockerResource", function($resource, $websocket, 
 		var options = _.defaults(config || {}, {
 			id 	  	: null,
 			stream	: true, 
-			stdin 	: false, 
+			stdin 	: true, 
 			stdout	: true, 
 			stderr	: true
 		});

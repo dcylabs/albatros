@@ -1,5 +1,8 @@
 # Changelog 
 
+## [0.4.1]
+* Fixed tab usage and terminal bell in websocket console
+
 ## [0.4.0]
 * Added error handling to remove logs 
 * Fixed panics
