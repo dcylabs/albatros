@@ -103,15 +103,26 @@
 
 .container-details{
 	position:relative;
-	.col-md-6{
-		float:none;
+	.col-md-12{
 		&.console-container{
-			position:absolute;
-			top:0;
-			right:0;
-			bottom:0;
+			position:relative;
+			display:block;
 			.panel{
-				height:100%;
+				height: 400px;
+			}
+		}
+	}
+	@media (min-width: $screen-lg-min){
+		.col-lg-6{
+			float:none;
+			&.console-container{
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				.panel{
+					height:100%;
+				}
 			}
 		}
 	}

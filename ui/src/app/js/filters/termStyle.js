@@ -2,11 +2,10 @@ angular.module("app").filter('termStyle', function($sce) {
 	return function(data, streamSize) {
     
       /*
-        TODO HANDLE REWRITE FROM TOP "\e[H"
+        TODO: HANDLE REWRITE FROM TOP "\e[H"
       */
 
-      // Dont know why streamSize is 3 ( 4 in the doc )
-      streamSize = streamSize || 3;
+      streamSize = streamSize || 4;
 
       var html = data; 
       var regex = {

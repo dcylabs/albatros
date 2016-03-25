@@ -1,5 +1,9 @@
 # Changelog 
 
+## [0.4.2]
+* Fixed Log headers 
+* Improved readability for laptops
+
 ## [0.4.1]
 * Fixed tab usage and terminal bell in websocket console
 

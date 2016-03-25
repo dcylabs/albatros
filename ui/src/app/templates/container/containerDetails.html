@@ -23,7 +23,7 @@
 </div>
 
 <div class="container-details">
-	<div class="col-md-6">
+	<div class="col-md-12 col-lg-6">
 		<div class="panel panel-info light">
 			<div class="panel-heading"> CONFIGURATION </div>
 			<div class="panel-body">
@@ -100,14 +100,14 @@
 		</div>
 	</div>
 
-	<div class="col-md-6 console-container" >
+	<div class="col-md-12 col-lg-6 console-container" >
 		<div class="panel panel-info">
 			<div class="panel-heading"> CONSOLE </div>
 			<div class="panel-body">
 				<form class="consoleContainer">
 					<div class="console">
 						<div class="output">
-							<div class="content" ng-bind-html="console | termStyle"></div>
+							<div class="content" ng-bind-html="console | termStyle : 3 "></div>
 						</div>
 						<div class="input">
 							<i class="material-icons">chevron_right</i>
