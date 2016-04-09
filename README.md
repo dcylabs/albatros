@@ -38,11 +38,12 @@ albatros:
     - ~/cert.pem:/var/albatros/cert.pem:ro
   environment:
     - USE_SSL=1
-    - ACCOUNTS=username1:$2a$10$PYzPqiPVrB8GIouPtSXA2eNYBxdkpc5NfOjMU6NoZdswMItdEJ6G6;username2:$2a$10$PYzPqiPVrB8GIouPtSXA2eNYBxdkpc5NfOjMU6NoZdswMItdEJ6G6
+    - ACCOUNTS=username1:$$2a$$10$$PYzPqiPVrB8GIouPtSXA2eNYBxdkpc5NfOjMU6NoZdswMItdEJ6G6;username2:$$2a$$10$$PYzPqiPVrB8GIouPtSXA2eNYBxdkpc5NfOjMU6NoZdswMItdEJ6G6
   ports:
     - "80:80"
     - "443:443"
 ```
+Note: When using docker-compose, you will need to escape '$' character in environment variables as described in the [documentation](https://docs.docker.com/compose/compose-file/#variable-substitution)
 ## Configuration 
 Since 0.5.0 configuration is done by setting environment variables
 
