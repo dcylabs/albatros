@@ -1,9 +1,9 @@
 package server
 
 import (
- 	"net/http"
  	"io"
 	"fmt"
+ 	"net/http"
 	"albatros-server/helpers" 
 )
 
@@ -19,4 +19,3 @@ func (h KitematicHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 	}
  	io.Copy(w, res.Body)
 }
-

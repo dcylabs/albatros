@@ -10,9 +10,6 @@
 }
 
 .loader{
-	position:absolute;
-	bottom:10px;
-	left:20px;
 	$duration: 1.2s;
 	.rect{
 		display:inline-block;
@@ -33,6 +30,19 @@
 			animation-duration: $duration; 
 			animation-timing-function: ease-in-out;
 			animation-iteration-count: infinite; 
+		}
+	}
+	&.footer-loader{
+		position:absolute;
+		bottom:10px;
+		left:20px;	
+	}
+	&.main-loader{
+		display:inline-block;
+		margin:10px auto;
+		.rect{
+			height:40px; 
+			width:15px;		
 		}
 	}
 }

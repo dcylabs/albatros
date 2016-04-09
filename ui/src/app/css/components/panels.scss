@@ -49,9 +49,10 @@
 			table-layout:fixed;
 		}
 	}
-	.prelined{
-		white-space:pre-line;
+	.consolas{
+		white-space:pre;
 		word-break: break-all;
+		font-family: consolas;
 		span{
 			display:inline;
 		}

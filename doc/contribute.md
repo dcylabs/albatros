@@ -7,7 +7,6 @@
 ```
 docker run -ti --rm \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-	-v $(pwd)/dist/config.json:/var/albatros/config.json:ro \
     -v $(pwd)/go/src/albatros-server:/var/albatros/go/src/albatros-server:ro \
     -v $(pwd)/ui/src:/var/albatros/ui/src:ro \
     -v $(pwd)/ui/Gruntfile.js:/var/albatros/ui/Gruntfile.js:ro \
@@ -20,6 +19,8 @@ docker run -ti --rm \
 
 ```
 go get golang.org/x/net/websocket
+go get github.com/caarlos0/env
+go get golang.org/x/crypto/bcrypt
 go build albatros-server
 ./albatros-server &2> /dev/null
 ```

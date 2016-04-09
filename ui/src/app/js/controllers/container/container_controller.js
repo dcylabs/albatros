@@ -20,6 +20,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
       confirmButtonColor  : '#22B8EB',
     },function(){
       var form = $('#containerRenameForm').serializeObject();
+      showLoader('Renaming container');
       DockerResource.Containers.rename($.extend({id:$routeParams.id},form),function(data){
         $scope.refreshContainer(); 
         $scope.$root.$broadcast('refreshContainers');        
@@ -29,6 +30,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   };
    
   $scope.start = function(){
+    showLoader("Starting container");
     DockerResource.Containers.start({id:$routeParams.id}, function(data){
       $scope.refreshContainer(); 
       $scope.$root.$broadcast('refreshContainers');
@@ -38,6 +40,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 
   $scope.stop = function(){
     warnAct('Stopping container may broke some dependencies',function(){    
+      showLoader("Stopping container");
       DockerResource.Containers.stop({id:$routeParams.id}, function(data){
         $scope.refreshContainer(); 
         $scope.$root.$broadcast('refreshContainers');
@@ -48,6 +51,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 
   $scope.restart = function(){
     warnAct('Restarting container may broke some dependencies',function(){        
+      showLoader("Restarting container");
       DockerResource.Containers.restart({id:$routeParams.id}, function(data){
         $scope.refreshContainer(); 
         $scope.$root.$broadcast('refreshContainers');
@@ -74,15 +78,18 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   };
 
   $scope.downloadLogs = function(){ 
+    showLoader("Downloading container logs");
     DockerResource.Containers.logs({id:$routeParams.id, tail:false},function(data){
       var logs = $filter('termStyle')(resourceDataToStr(data));
       var template = $templateCache.get('container/containerLogs.html');
       var html = template.replace('{{data}}',logs).replace('{{host}}',window.location.host);
+      dismissLoader();
       window.open('data:text/html;charset=utf-8,'+encodeURIComponent(html), '_blank');
     });
   };
 
   $scope.pause = function(){
+      showLoader("Pausing container");
       DockerResource.Containers.pause({id:$routeParams.id}, function(data){
         $scope.refreshContainer(); 
         $scope.$root.$broadcast('refreshContainers');
@@ -91,6 +98,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   };
 
   $scope.unpause = function(){
+      showLoader("Unpausing container");
       DockerResource.Containers.unpause({id:$routeParams.id}, function(data){
         $scope.refreshContainer(); 
         $scope.$root.$broadcast('refreshContainers');
@@ -100,6 +108,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
 
   $scope.remove = function(){
     warnAct('Removing container may broke some dependencies',function(){        
+      showLoader("Removing container");
       DockerResource.Containers.remove({id:$routeParams.id}, function(data){
         $scope.$root.$broadcast('refreshContainers');
         resultAct(!data[0], 'Successfully removed !', data);    
@@ -133,7 +142,7 @@ angular.module("app").controller('ContainerController', function($scope, $routeP
   };
 
 	$scope.refreshContainer = function(){
-  	DockerResource.Containers.get({id:$routeParams.id}, function(data){
+    DockerResource.Containers.get({id:$routeParams.id}, function(data){
       $scope.container = data; 
     });
     $scope.refreshTop(); 

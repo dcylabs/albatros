@@ -3,17 +3,19 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"github.com/freehaha/token-auth/jwt"
-	"albatros-server/config"
-	"albatros-server/model"
 	"encoding/json"
+	"github.com/freehaha/token-auth/jwt"
+	"golang.org/x/crypto/bcrypt"
+	"albatros-server/configuration"
+	"albatros-server/model"
 )
 
 // AuthHandler
 type AuthHandler struct {
 	jwtStorage jwtstore.JwtStore
-	settings config.Settings
+	config configuration.Configuration
 }
+
 func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 	if(r.Method == "POST"){
 		
@@ -35,7 +37,7 @@ func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 				Expire int
 			}
 			data.Token = fmt.Sprintf("%s", token)
-			data.Expire = h.settings.SessionTime
+			data.Expire = h.config.SessionTime
 
 			response, _ := json.Marshal(data)
 			fmt.Fprintf(w, "%s", response)	
@@ -52,13 +54,12 @@ func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 		response, _ := json.Marshal(data)
 		fmt.Fprintf(w, "%s", response)	
 	}
-	
-	
 }
+
 func (h AuthHandler) validate(username string, password string) (bool, *model.User ) {
 	if(username != "" && password != ""){
-		for _, user := range h.settings.Accounts{
-			if(username == user.Username && password == user.Password){
+		for _, user := range h.config.Accounts{
+			if(username == user.Username && bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)) == nil){
 				return true, &user
 			}
 		}

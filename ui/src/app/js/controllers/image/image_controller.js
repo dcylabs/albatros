@@ -8,12 +8,13 @@ angular.module("app").controller('ImageController', function($scope, $routeParam
 
  	$scope.remove = function(){
  		// To improve
+ 		showLoader('Removing image');
 		DockerResource.Images.remove({id:$routeParams.id}, function(data){
-      var result = resourceDataToStr(data); 
-      resultAct((result.indexOf('[') === 0), 'Successfully removed !', data);    
-      if(result.indexOf('[') === 0){
-        $location.path('/images');  
-      }
+      		var result = resourceDataToStr(data); 
+      		resultAct((result.indexOf('[') === 0), 'Successfully removed !', data);    
+      		if(result.indexOf('[') === 0){
+        		$location.path('/images');  
+      		}
   	}); 
   };
 

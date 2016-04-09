@@ -39,12 +39,13 @@ angular.module("app").controller('ContainerCreateController', function($scope, $
 	};
 
 	$scope.create = function(){
+		showLoader('Creating container');
 		DockerResource.Containers.create(transformContainer($scope.container), function(data){
-      $scope.$root.$broadcast('refreshContainers');
-      resultAct(data.Id, 'Successfully created !', data);    
-      if(data.Id){
-        $location.path('/containers/'+data.Id);  
-      }      			
+      		$scope.$root.$broadcast('refreshContainers');
+      		resultAct(data.Id, 'Successfully created !', data);    
+      		if(data.Id){
+        		$location.path('/containers/'+data.Id);  
+      		}      			
 		});
 	};
 

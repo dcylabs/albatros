@@ -18,15 +18,7 @@ angular.module("app").controller('ImagePullController', function($scope, $locati
 			confirmButtonColor  : '#22B8EB',   					
    		}, function(){		
    			var tag = $('#imageTag').val();
-		  	swal({
-		  		title				: 'Working',
-		  		html 				: '<p>Pulling image from docker hub</p>',
-		  		allowOutsideClick	: false,
-		  		allowEscapeKey		: false,
-		  		closeOnConfirm		: false, 
-		  		closeOnCancel		: false,
-		  		confirmButtonColor  : '#22B8EB', 
-		  	}, function(){ return false; });    			
+		  	showLoader('Pulling image from Docker hub');  			
 			DockerResource.Images.create({
 				fromImage: image.name,
 				tag: tag || 'latest'
@@ -54,7 +46,10 @@ angular.module("app").controller('ImagePullController', function($scope, $locati
 
 	$scope.search = function(){
 		if($scope.query.length){
-			$scope.images = DockerResource.Images.search({term: $scope.query});	
+			showLoader('Searching image on Docker hub');
+			$scope.images = DockerResource.Images.search({term: $scope.query}, function(){
+				dismissLoader();
+			});	
 		}
 	};
 

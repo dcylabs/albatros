@@ -1,36 +1,48 @@
 package main 
 
 import(
-	"log"
-	"flag"
-	"net/http"
 	"os"
-	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+	"golang.org/x/crypto/bcrypt"
 	"albatros-server/server"
-	"albatros-server/config"
+	"albatros-server/configuration"
+	"albatros-server/helpers" 
 )
 
 func main(){
-	var settings config.Settings
-	var configFilePath string
-
-	flag.StringVar(&configFilePath, "c", "./config.json", "JSON Config File")
-	flag.Parse()
-
-	configFile, _ := os.Open(configFilePath)
-	jsonParser := json.NewDecoder(configFile)
-	jsonParser.Decode(&settings)
-
-	// Force session to be at least a minute
-	if(settings.SessionTime < 60){
-		settings.SessionTime = 60
+	args := os.Args
+	if(len(args) > 1){
+		switch(args[1]){
+			case "encrypt":
+				if(len(args) < 3){
+					helpers.ErrorLog("ENCRYPT", "You need to provide at least 2 arguments" )
+				}else{
+					password := []byte(args[2])
+					hashedPassword, err := bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
+					if(err != nil){
+						helpers.ErrorLog("ENCRYPT", fmt.Sprintf("Following error occured when trying to encrypt password : %s", err.Error()) )
+					}
+					fmt.Println(string(hashedPassword))
+				}
+			default:
+				break;
+		}
+		return;
 	}
 
-	handler := server.CreateHandlers(settings)
+	var config configuration.Configuration
 
-	// Encapsulated in subroutine to listen both HTTP and HTTPs
-	go func(){ log.Println(http.ListenAndServeTLS(settings.ListenHTTPS, settings.SSLCertPath, settings.SSLKeyPath, handler)) }()
-	log.Println(http.ListenAndServe(settings.ListenHTTP, handler))
+	config.Load()
+	config.Log()
 
+	handler := server.CreateHandlers(config)
+
+	if(config.UseSSL){
+		// Encapsulated in subroutine to listen both HTTP and HTTPs
+		go func(){ log.Println(http.ListenAndServeTLS(config.ListenHTTPS, config.SSLCertPath, config.SSLKeyPath, handler)) }()
+	}
+	log.Println(http.ListenAndServe(config.ListenHTTP, handler))
 
 }

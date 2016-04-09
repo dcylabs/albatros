@@ -1,14 +1,14 @@
 package server
 
 import (
+	"io"
+	"fmt"
 	"net"
+	"sync"
 	"net/http"
 	"net/http/httputil"
-	"io"
 	"golang.org/x/net/websocket"
 	"albatros-server/helpers" 
-	"fmt"
-	"sync"
 )
 
 // DockerHandler 
@@ -101,5 +101,3 @@ func (h DockerHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
 		h.HandleHTTP(w,r)	
 	}
 }
-
- 

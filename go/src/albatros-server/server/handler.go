@@ -1,28 +1,28 @@
 package server
 
 import (
+	"time"
 	"net/http"
 	"github.com/freehaha/token-auth"
 	"github.com/freehaha/token-auth/jwt"
-	"time"
-	"albatros-server/config"
+	"albatros-server/configuration"
 	"albatros-server/helpers" 
 )
 
-func CreateHandlers(settings config.Settings) http.Handler {
+func CreateHandlers(config configuration.Configuration) http.Handler {
 	mux	:= http.NewServeMux()
 	var authDockerHandler http.Handler
 	var kitematicHandler http.Handler
 	var loginHandler http.Handler
 	var appHandler http.Handler
 
-	dockerHandler := DockerHandler{settings.DockerEndpoint}
-	jwtStorage := jwtstore.New(settings.Secret, time.Second*time.Duration(settings.SessionTime))
+	dockerHandler := DockerHandler{config.DockerEndpoint}
+	jwtStorage := jwtstore.New(config.Secret, time.Second*time.Duration(config.SessionTime))
 
 	authDockerHandler 	= tauth.NewTokenAuth(dockerHandler, helpers.UnauthorizedHandler, jwtStorage, &helpers.AlbatrosAuthGetter{Parameter:"token"} )
 	kitematicHandler	= KitematicHandler{}
-	loginHandler 		= AuthHandler{*jwtStorage, settings}
-	appHandler 			= http.FileServer(http.Dir(settings.AppPath))
+	loginHandler 		= AuthHandler{*jwtStorage, config}
+	appHandler 			= http.FileServer(http.Dir(config.AppPath))
 
 	
 	mux.Handle(		"/dockerapi/", 	http.StripPrefix("/dockerapi", authDockerHandler))

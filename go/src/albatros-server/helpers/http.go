@@ -27,5 +27,3 @@ func IsWebsocket(req *http.Request) bool {
 
 	return upgrade_websocket
 }
-
- 

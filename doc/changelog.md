@@ -1,5 +1,14 @@
 # Changelog 
 
+## [0.5.0]
+* Moved to JSON config file to ENV vars configuration
+* Improved security by using BCrypt instead of plain text passwords 
+* Improved logs readability
+* Added tool to quickly encrypt your passwords
+* Added some waiting alerts for long processes like stopping a container 
+* Added test.sh in build dir for quick tests
+* Cleaned go code 
+
 ## [0.4.2]
 * Fixed Log headers 
 * Improved readability for laptops
