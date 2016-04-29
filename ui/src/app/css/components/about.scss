@@ -1,0 +1,28 @@
+.about-page{
+	text-align:center;
+	padding:60px;
+	.logo{
+		position:relative;
+		width:100px;
+		height:100px;
+		margin:0 auto;
+		background-image:url('../img/logo-black.png');
+		background-size: cover; 
+	}	
+	.title, .subtitle, .version{
+		font-weight:bold;
+	}
+	p{
+		margin:30px;
+	}
+	.store-buttons{
+		margin:20px;
+		.store-button{
+			position:relative;
+			display:inline-block;
+			img{
+				height: 60px;
+			}
+		}
+	}
+}

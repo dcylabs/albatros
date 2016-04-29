@@ -32,6 +32,12 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
   }); 
 
 
+  $routeProvider.when('/about', {
+    templateUrl: 'about/about.html',
+    controller: 'AboutController'
+  });   
+
+
   $routeProvider.otherwise({ redirectTo: '/containers' });
 
 });

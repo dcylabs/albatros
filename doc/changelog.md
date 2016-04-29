@@ -1,5 +1,10 @@
 # Changelog 
 
+## [0.5.1]
+* Updated google play link 
+* Added about page 
+* Added donate button 
+
 ## [0.5.0]
 * Moved to JSON config file to ENV vars configuration
 * Improved security by using BCrypt instead of plain text passwords 

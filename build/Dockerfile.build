@@ -8,13 +8,6 @@ RUN apt-get install -y ca-certificates
 RUN npm install -g bower grunt-cli
 RUN gem install sass 
 
-# Compiling UI
-COPY ui /var/albatros/ui
-WORKDIR /var/albatros/ui 
-RUN npm install 
-RUN bower install --allow-root
-RUN grunt build 
-
 # Compiling Server
 COPY go /var/albatros/go
 ENV GOPATH '/var/albatros/go'
@@ -26,6 +19,13 @@ RUN go get golang.org/x/crypto/bcrypt
 WORKDIR	/var/albatros/
 # Compiling as a fully standalone executable (used for dist)
 RUN CGO_ENABLED=0 go build -a -installsuffix cgo -tags netgo albatros-server 
+
+# Compiling UI
+COPY ui /var/albatros/ui
+WORKDIR /var/albatros/ui 
+RUN npm install 
+RUN bower install --allow-root
+RUN grunt build 
 
 # Removing sources to save some space 
 RUN rm -rf /var/albatros/ui/node_modules/

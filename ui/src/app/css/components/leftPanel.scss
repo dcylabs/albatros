@@ -75,7 +75,7 @@
 		}
 	}
 	.brand{
-		$appLinks_height: 60px;
+		$helpLinks_height: 60px;
 		position:absolute;
 		bottom:0;
 		left:0;
@@ -107,12 +107,12 @@
 		.version{
 			font-size:0.7em;
 		}
-		.appLinks{
+		.helpLinks{
 			padding:10px;
-			height:$appLinks_height;
+			height:$helpLinks_height;
 			a{
-				img{
-					height:100%;
+				i{
+					color:white;
 				}
 			}
 	}		
